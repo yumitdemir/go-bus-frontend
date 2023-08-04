@@ -11,7 +11,7 @@ function LinksDesktop({footerLinks}) {
                     <p className={"font-medium mb-2"}>{section.title}</p>
                     <ul className={"flex flex-col gap-4"}>
                         {section.links.map(link =>
-                            <li key={shortid.generate()}>{link}</li>
+                            <li key={shortid.generate()} className={"cursor-pointer"}>{link}</li>
                         )}
                     </ul>
                 </div>
