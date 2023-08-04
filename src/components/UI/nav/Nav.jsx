@@ -22,18 +22,18 @@ function Nav(props) {
     return (
         <header>
             <nav className={" w-full bg-[#082967] h-[60px] "}>
-                <div className={"container mx-auto h-full px-2 sm:px-0"}>
+                <div className={"container mx-auto h-full px-2 "}>
                     <div className={"flex w-full h-full items-center justify-between text-white"}>
                         <div className={"flex h-full justify-between "}>
                             <img className={"w-20 me-8"} src="/src/assets/logo.svg" alt=""/>
                             <div className={" items-center h-full hidden md:flex gap-1"}>
-                                <p className={"font-roboto  flex items-center cursor-pointer  h-full hover:bg-[#09265C]  px-2"}>Plan
+                                <p className={"  flex items-center cursor-pointer  h-full hover:bg-[#09265C]  px-2"}>Plan
                                     Your Journey <MdKeyboardArrowDown className={"text-2xl"}/></p>
-                                <p className={"font-roboto flex items-center cursor-pointer  h-full hover:bg-[#09265C] px-2"}>Service <MdKeyboardArrowDown
+                                <p className={" flex items-center cursor-pointer  h-full hover:bg-[#09265C] px-2"}>Service <MdKeyboardArrowDown
                                     className={"text-2xl"}/></p>
-                                <p className={"font-roboto cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2"}>Real-Time
+                                <p className={" cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2"}>Real-Time
                                     Info</p>
-                                <p className={"font-roboto cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2"}>Help</p>
+                                <p className={"cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2"}>Help</p>
                             </div>
 
                         </div>
@@ -47,13 +47,13 @@ function Nav(props) {
                 <div className={"flex flex-col gap-2 bg-[#082967]"}>
 
                         <div className={"flex flex-col  container mx-auto h-full px-2 sm:px-0 text-white"}>
-                            <p className={"font-roboto  flex items-center cursor-pointer  h-full hover:bg-[#09265C] py-3 px-2"}>Plan
+                            <p className={"  flex items-center cursor-pointer  h-full hover:bg-[#09265C] py-3 px-2"}>Plan
                                 Your Journey <MdKeyboardArrowDown className={"text-2xl"}/></p>
-                            <p className={"font-roboto flex items-center cursor-pointer  h-full hover:bg-[#09265C] px-2  py-3"}>Service <MdKeyboardArrowDown
+                            <p className={"flex items-center cursor-pointer  h-full hover:bg-[#09265C] px-2  py-3"}>Service <MdKeyboardArrowDown
                                 className={"text-2xl"}/></p>
-                            <p className={"font-roboto cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2  py-3"}>Real-Time
+                            <p className={"cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2  py-3"}>Real-Time
                                 Info</p>
-                            <p className={"font-roboto cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2  py-3"}>Help</p>
+                            <p className={" cursor-pointer  flex items-center hover:bg-[#09265C]  h-full px-2  py-3"}>Help</p>
                         </div>
 
                 </div>

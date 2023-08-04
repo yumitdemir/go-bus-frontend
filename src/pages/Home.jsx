@@ -2,10 +2,12 @@ import React from 'react';
 
 function Home(props) {
     return (
-        <div>
+        <main className={"flex-1 "}>
+          <p>  The main content</p>
 
-        </div>
+        </main>
     );
 }
+
 
 export default Home;

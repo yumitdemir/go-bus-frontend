@@ -6,10 +6,12 @@ import Footer from "./UI/footer/Footer.jsx";
 function GuestLayout(props) {
     return (
         <>
-            <Nav/>
+            <div className={"flex flex-col min-h-screen bg-[#f7f7f7] font-roboto"}>
+                <Nav/>
 
-            <Outlet/>
-            <Footer/>
+                <Outlet/>
+                <Footer/>
+            </div>
         </>
     );
 }
