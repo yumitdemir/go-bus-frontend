@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import LinksMobile from "./components/LinksMobile.jsx";
-import LinksDesktop from "./components/LinksDesktop.jsx";
 import Links from "./components/Links.jsx";
 import Socials from "./components/Socials.jsx";
 import Policies from "./components/Policies.jsx";

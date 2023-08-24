@@ -17,7 +17,7 @@ function Nav(props) {
     }, []);
 
     const hamburgerClickHandler = () => {
-        setNavState((oldState) => !oldState)
+        setNavState((oldStates) => !oldState)
     };
     return (
         <header>

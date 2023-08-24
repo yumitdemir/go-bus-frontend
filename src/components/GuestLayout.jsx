@@ -8,7 +8,6 @@ function GuestLayout(props) {
         <>
             <div className={"flex flex-col min-h-screen bg-[#f7f7f7] font-roboto"}>
                 <Nav/>
-
                 <Outlet/>
                 <Footer/>
             </div>

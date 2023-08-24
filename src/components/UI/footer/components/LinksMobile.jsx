@@ -1,5 +1,5 @@
 import React from 'react';
-import shortid from "shortid";
+import {nanoid} from "nanoid";
 
 function LinksMobile({footerLinks}) {
     return (
@@ -8,7 +8,7 @@ function LinksMobile({footerLinks}) {
                 {/* FAQ */}
                 <div className="join join-vertical w-full rounded-none sm:hidden ">
                     {footerLinks.map(section =>
-                        <div key={shortid.generate()}
+                        <div key={nanoid()}
                              className="collapse collapse-arrow join-item  border-b border-[#c8c8c8] rounded-none">
                             <input type="checkbox"/>
                             <div className="collapse-title text-xl font-medium">
@@ -16,7 +16,7 @@ function LinksMobile({footerLinks}) {
                             </div>
                             <div className="collapse-content">
                                 <ul>
-                                    {section.links.map(link => <li key={shortid.generate()}>{link}</li>)}
+                                    {section.links.map(link => <li key={nanoid()}>{link}</li>)}
                                 </ul>
                             </div>
                         </div>
