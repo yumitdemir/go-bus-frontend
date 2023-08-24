@@ -12,8 +12,8 @@ function DatePassangerAndSubmit({className, handleValueChange, dates, setDateVal
     let tripType = watch("tripType")
     useEffect(() => {
         setDateValue({
-            startDate: null,
-            endDate: null
+            startDate: new Date(),
+            endDate: new Date()
         })
     }, [tripType]);
 

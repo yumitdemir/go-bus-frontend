@@ -13,8 +13,8 @@ function RouteAndDateSelector({className}) {
     };
 
     const [dates, setDateValue] = useState({
-        startDate: null,
-        endDate: null
+        startDate: new Date(),
+        endDate: new Date()
     });
 
     const handleValueChange = (newValue) => {
