@@ -12,15 +12,6 @@ function RouteAndDateSelector({className}) {
         console.log(data)
     };
 
-    const [dates, setDateValue] = useState({
-        startDate: new Date(),
-        endDate: new Date()
-    });
-
-    const handleValueChange = (newValue) => {
-        setDateValue(newValue);
-    }
-
     return (
 
         <div className={`${className}`}>
@@ -28,7 +19,7 @@ function RouteAndDateSelector({className}) {
                 <TripType/>
                 <div className={"flex flex-col lg:flex-row gap-3 w-[100%]"}>
                     <Route className={"flex relative w-full lg:w-[50%]"}/>
-                    <DatePassangerAndSubmit setDateValue={setDateValue} dates={dates} handleValueChange={handleValueChange} className={"flex gap-2 w-full lg:w-[50%]"}/>
+                    <DatePassangerAndSubmit className={"flex gap-2 w-full lg:w-[50%]"}/>
                 </div>
             </form>
         </div>

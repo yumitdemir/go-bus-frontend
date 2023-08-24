@@ -1,15 +1,27 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
 import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
 
-function DatePassangerAndSubmit({className, handleValueChange, dates, setDateValue}) {
+function DatePassangerAndSubmit({className}) {
     const {RouteAndDateForm} = useContext(RouteAndDateContext);
     const {register, setValue, watch} = RouteAndDateForm;
+    let tripType = watch("tripType")
+
+    const [dates, setDateValue] = useState({
+        startDate: new Date(),
+        endDate: new Date()
+    });
+
+    const handleValueChange = (newValue) => {
+        setDateValue(newValue);
+    }
+
     useEffect(() => {
         setValue("dateStart", dates.startDate)
         setValue("dateReturn", dates.endDate)
     }, [dates]);
-    let tripType = watch("tripType")
+
+
     useEffect(() => {
         setDateValue({
             startDate: new Date(),
@@ -25,8 +37,8 @@ function DatePassangerAndSubmit({className, handleValueChange, dates, setDateVal
                        className={"z-50 bg-white px-2 absolute top-0 left-[50px] transform -translate-x-1/2 -translate-y-1/2"}>
                     Departure
                 </label>
-                <input type="hidden"   {...register('dateStart', {required: true})}/>
-                <input type="hidden"    {...register('dateReturn', {required: true})}/>
+                <input type="date" className={"hidden"}  {...register('dateStart', {required: true})}/>
+                <input type="date" className={"hidden"}     {...register('dateReturn', {required: true})}/>
                 <Datepicker
                     containerClassName={"relative"}
                     toggleClassName={"absolute  rounded-r-lg text-[#8b8b8b] left-0 h-full ml-2  focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"}
