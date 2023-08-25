@@ -11,7 +11,11 @@ export default {
                 roboto: ['Roboto'],
             },
             colors:{
-
+                primary:"#082967",
+                "primary-focus": "#194494",
+                neutral:"#353535",
+                "neutral-content":"#8b8b8b",
+                "neutral-content-light":"#c8c8c8"
             }
         },
     },

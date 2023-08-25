@@ -7,9 +7,7 @@ function TripType(props) {
     const {RouteAndDateForm} = useContext(RouteAndDateContext);
     const {register, control} = RouteAndDateForm;
     return (
-        <div className={"flex flex-row gap-4 mb-5"}>
-
-
+        <div className={"flex flex-row gap-4 mb-[24px]"}>
             <Controller
                 name="tripType"
                 control={control}
