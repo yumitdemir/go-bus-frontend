@@ -13,7 +13,7 @@ function TravelPerkCard({title, Icon, description, buttonText}) {
                     <p className={"font-bold"}>{title}</p>
                     <p className={"sm:text-center text-sm"}>{description}</p>
                     <button
-                        className="btn hover:bg-neutral-content-light bg-opacity-10 whitespace-nowrap flex-nowrap font-normal w-fit px-0 sm:px-5">{buttonText}
+                        className="btn hover:bg-[#EEEEEE] transition duration-100 ease-in-out border-none whitespace-nowrap flex-nowrap font-normal w-fit px-0 sm:px-5">{buttonText}
                         <RiArrowRightSLine className={"text-2xl"}/>
                     </button>
                 </div>

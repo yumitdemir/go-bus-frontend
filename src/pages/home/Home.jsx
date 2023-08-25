@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import HeroImageAndSearchWidget from "./components/HeroImageAndSearchWidget.jsx";
 import HomePageQuickLinks from "./components/HomePageQuickLinks.jsx";
 import TravelPerksCards from "./components/travelPerksCards/TravelPerksCards.jsx";
+import DestinationDiscoveryCard from "./components/DestinationDiscoveryCard.jsx";
 
 function Home(props) {
 
@@ -10,6 +11,7 @@ function Home(props) {
            <HeroImageAndSearchWidget/>
             <HomePageQuickLinks/>
             <TravelPerksCards/>
+            <DestinationDiscoveryCard/>
         </main>
     );
 }
