@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import HeroImageAndSearchWidget from "./components/HeroImageAndSearchWidget.jsx";
-import HomePageQuickLinks from "./components/homePageQuickLinks/HomePageQuickLinks.jsx";
+import HomePageQuickLinks from "./components/HomePageQuickLinks.jsx";
+import TravelPerksCards from "./components/travelPerksCards/TravelPerksCards.jsx";
 
 function Home(props) {
 
@@ -8,7 +9,7 @@ function Home(props) {
         <main className={"flex-1 "}>
            <HeroImageAndSearchWidget/>
             <HomePageQuickLinks/>
-
+            <TravelPerksCards/>
         </main>
     );
 }

@@ -9,21 +9,21 @@ function HomePageQuickLinks(props) {
             <div className={"w-[33%] sm:rounded-lg sm:border border-e border-neutral-content-light h-[78px] flex justify-center items-center cursor-pointer hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] transition duration-300 ease-in-out"}>
                 <div className={"flex flex-col sm:flex-row justify-center items-center gap-2"}>
                     <IoTicketOutline className={"text-4xl"}/>
-                    <p>Manage My Booking</p>
+                    <p className={"text-center"}>Manage My Booking</p>
                 </div>
 
             </div>
             <div className={"w-[33%] sm:rounded-lg sm:border border-e border-neutral-content-light h-[78px] flex justify-center items-center cursor-pointer hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] transition duration-300 ease-in-out"}>
                 <div className={"flex flex-col sm:flex-row justify-center items-center gap-2"}>
                     <AiOutlineClockCircle className={"text-4xl"}/>
-                    <p> Bus Tracker</p>
+                    <p className={"text-center"}> Bus Tracker</p>
                 </div>
 
             </div>
             <div className={"w-[33%] sm:rounded-lg sm:border  border-neutral-content-light h-[78px] flex justify-center items-center cursor-pointer hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] transition duration-300 ease-in-out"}>
                 <div className={"flex flex-col sm:flex-row justify-center items-center gap-2"}>
                     <BiHelpCircle className={"text-4xl"}/>
-                    <p> Help</p>
+                    <p className={"text-center"}>Help</p>
                 </div>
 
             </div>
