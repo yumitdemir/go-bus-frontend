@@ -6,7 +6,6 @@ function Home(props) {
     return (
         <main className={"flex-1 "}>
            <HeroImageAndSearchWidget/>
-
         </main>
     );
 }

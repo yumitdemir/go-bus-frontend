@@ -16,8 +16,19 @@ export default {
         },
     },
     plugins: [
-        require('@tailwindcss/forms'),
+        require("daisyui"),
     ],
     darkMode: 'class',
+    daisyui: {
+        themes: [
+            {
+                light: {
+                    ...require("daisyui/src/theming/themes")["[data-theme=light]"],
+                    "primary": "#082967",
+                    "primary-focus": "#194494",
+                },
+            },
+        ],
+    },
 }
 

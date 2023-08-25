@@ -7,6 +7,7 @@ function DatePassangerAndSubmit({className}) {
     const {register, setValue, watch} = RouteAndDateForm;
     let tripType = watch("tripType")
 
+
     const [dates, setDateValue] = useState({
         startDate: new Date(),
         endDate: new Date()
@@ -37,12 +38,12 @@ function DatePassangerAndSubmit({className}) {
                        className={"z-50 bg-white px-2 absolute top-0 left-[50px] transform -translate-x-1/2 -translate-y-1/2"}>
                     Departure
                 </label>
-                <input type="date" className={"hidden"}  {...register('dateStart', {required: true})}/>
-                <input type="date" className={"hidden"}     {...register('dateReturn', {required: true})}/>
+                <input type="date"  className={"hidden"}  {...register('dateStart')}/>
+                <input type="date"  className={"hidden"}     {...register('dateReturn')}/>
                 <Datepicker
-                    containerClassName={"relative"}
-                    toggleClassName={"absolute  rounded-r-lg text-[#8b8b8b] left-0 h-full ml-2  focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"}
-                    inputClassName="w-full rounded-md focus:ring-[#0950d6] font-normal border border-[#8b8b8b] px-9 py-[10px] text-[#333333] hover:bg-[#f0f0f0] focus:bg-[#f0f0f0]"
+                    containerClassName={"relative "}
+                    toggleClassName={"absolute   rounded-r-lg text-[#8b8b8b] left-0 h-full ml-2  focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"}
+                    inputClassName="bg-white outline-[#153b82] w-full rounded-md focus:ring-[#0950d6] font-normal border border-[#8b8b8b] px-9 py-[10px] text-[#333333] hover:bg-[#f0f0f0] focus:bg-[#f0f0f0]"
                     useRange={tripType !== "one-way"}
                     asSingle={tripType === "one-way"}
                     popoverDirection="down"
@@ -57,8 +58,10 @@ function DatePassangerAndSubmit({className}) {
                     Passengers
                 </label>
                 <select
-                    className={" w-full rounded  border-[#8b8b8b] text-[#333333] py-[10px] hover:bg-[#f0f0f0]"} {...register('passengers', {required: true})}>
-                    <option value="1">1 Adult</option>
+                    className={"bg-white outline-[#153b82] border w-full rounded  border-[#8b8b8b] text-[#333333] py-[10px] hover:bg-[#f0f0f0]"} {...register('passengers', {required: true})}>
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
                 </select>
             </div>
             <button type={"submit"}
