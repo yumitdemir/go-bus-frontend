@@ -35,7 +35,7 @@ function DatePassangerAndSubmit({className}) {
         <div className={className}>
             <div className={"relative  w-[50%]"}>
                 <label htmlFor={"label"}
-                       className={"z-50 bg-white px-2 absolute top-0 left-[50px] transform -translate-x-1/2 -translate-y-1/2"}>
+                       className={"z-10 bg-white px-2 absolute top-0 left-[50px] transform -translate-x-1/2 -translate-y-1/2"}>
                     Departure
                 </label>
                 <input type="date"  className={"hidden"}  {...register('dateStart')}/>
@@ -54,7 +54,7 @@ function DatePassangerAndSubmit({className}) {
             </div>
             <div className="w-[30%] relative">
                 <label htmlFor={"label"}
-                       className={"z-50 bg-white px-1 absolute top-0 left-[55px] transform -translate-x-1/2 -translate-y-1/2"}>
+                       className={"z-10 bg-white px-1 absolute top-0 left-[55px] transform -translate-x-1/2 -translate-y-1/2"}>
                     Passengers
                 </label>
                 <select

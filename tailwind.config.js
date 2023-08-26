@@ -15,7 +15,8 @@ export default {
                 "primary-focus": "#194494",
                 neutral:"#353535",
                 "neutral-content":"#8b8b8b",
-                "neutral-content-light":"#c8c8c8"
+                "neutral-content-light":"#c8c8c8",
+                "neutral-content-hover":"#f0f0f0"
             }
         },
     },

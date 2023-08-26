@@ -18,7 +18,6 @@ function Home(props) {
                 <FlixBusAdvantages/>
             </Container>
 
-
         </main>
     );
 }

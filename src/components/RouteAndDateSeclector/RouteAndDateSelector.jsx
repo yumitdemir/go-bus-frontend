@@ -3,13 +3,25 @@ import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
 import TripType from "./TripType.jsx";
 import Route from "./Route.jsx";
 import DatePassangerAndSubmit from "./DatePassangerAndSubmit.jsx";
+import {createSearchParams, useNavigate} from "react-router-dom";
 
 
 function RouteAndDateSelector({className}) {
     const {RouteAndDateForm} = useContext(RouteAndDateContext);
     const {handleSubmit} = RouteAndDateForm;
+    const navigate = useNavigate()
     const onSubmit = (data) => {
         console.log(data)
+        navigate({
+            pathname: "search",
+            search: createSearchParams({
+                tripType: data.tripType,
+                departureCity: data.from,
+                arrivalCity:data.to,
+                rideDate: data.dateStart + "," + data.dateReturn,
+                passengers: data.passengers
+            }).toString()
+        });
     };
 
     return (
