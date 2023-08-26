@@ -7,7 +7,7 @@ import TravelPerkCard from "./TravelPerkCard.jsx";
 function TravelPerksCards(props) {
     return (
         <div
-            className={"w-full xl:container xl:mx-auto flex sm:gap-4  mb-10 px-4 border-y py-8 border-neutral-content-light"}>
+            className={" flex sm:gap-4  mb-10  border-y py-8 border-neutral-content-light"}>
             <div className={"grid grid-cols-4 gap-5 w-full "}>
                 <TravelPerkCard title={"Health and Safety"}
                                 description={"Keep yourself and others safe while traveling with us."}

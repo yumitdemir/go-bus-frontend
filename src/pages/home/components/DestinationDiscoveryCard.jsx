@@ -4,7 +4,7 @@ import {RiArrowRightSLine} from "react-icons/ri";
 
 function DestinationDiscoveryCard(props) {
     return (
-        <div className={"w-full xl:container xl:mx-auto flex sm:gap-4  mb-10 px-4 border-b pb-10 border-neutral-content-light"}>
+        <div className={" flex sm:gap-4  mb-10 border-b pb-10 border-neutral-content-light"}>
             <div
                 className={"  rounded-lg sm:border border-neutral-content-light sm:h-[190px] w-full flex flex-col-reverse sm:flex-row cursor-pointer  sm:hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] transition duration-300 ease-in-out"}>
                 <img src={MapTeaser} alt="" className={"h-[190px] sm:h-full w-full sm:w-[32%] object-cover"}/>

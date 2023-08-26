@@ -14,15 +14,15 @@ function RouteAndDateSelector({className}) {
 
     return (
 
-        <div className={`${className}`}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <TripType/>
-                <div className={"flex flex-col lg:flex-row gap-3 w-[100%]"}>
-                    <Route className={"flex relative w-full lg:w-[50%]"}/>
-                    <DatePassangerAndSubmit className={"flex gap-2 w-full lg:w-[50%]"}/>
-                </div>
-            </form>
-        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <TripType/>
+            <div className={"flex flex-col lg:flex-row gap-3 w-[100%]"}>
+                <Route className={"flex relative w-full lg:w-[50%]"}/>
+                <DatePassangerAndSubmit className={"flex gap-2 w-full lg:w-[50%]"}/>
+            </div>
+        </form>
+
     );
 }
 

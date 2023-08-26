@@ -1,6 +1,7 @@
 import React from 'react';
 import {RouteAndDateProvider} from "../RouteAndDateContext.jsx";
 import RouteAndDateSelector from "../../../components/RouteAndDateSeclector/RouteAndDateSelector.jsx";
+import Container from "../../../components/UI/Container.jsx";
 
 function HeroImageAndSearchWidget(props) {
     return (
@@ -12,8 +13,9 @@ function HeroImageAndSearchWidget(props) {
                     <img src="/src/assets/home/hero-home.jpg"
                          className={"object-cover h-[240px] xl:h-[400px]  w-full "}
                          alt=""/>
-                    <RouteAndDateSelector
-                        className={"xl:container w-full mx-auto  h-[185px] lg:h-[160px] px-4 py-4  xl:px-[30px] xl:pb-[30px] xl:pt-[30px]  bg-white xl:rounded-xl absolute bottom-0   left-1/2 transform -translate-x-1/2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"}/>
+                    <Container className={"h-[185px] lg:h-[160px] py-4 xl:px-[30px] xl:pb-[30px] xl:pt-[30px]  bg-white xl:rounded-xl absolute bottom-0   left-1/2 transform -translate-x-1/2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"}>
+                    <RouteAndDateSelector/>
+                    </Container>
                 </div>
             </RouteAndDateProvider>
 

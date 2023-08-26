@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Links from "./components/Links.jsx";
 import Socials from "./components/Socials.jsx";
 import Policies from "./components/Policies.jsx";
+import Container from "../Container.jsx";
 
 const footerLinks = [
     {
@@ -59,9 +60,11 @@ const footerLinks = [
 function Footer(props) {
     return (
         <footer className={"sm:border-t border-[#c8c8c8]  pt-11  w-full"}>
-            <Links footerLinks={footerLinks}/>
-            <Socials/>
-            <Policies/>
+            <Container>
+                <Links footerLinks={footerLinks}/>
+                <Socials/>
+                <Policies/>
+            </Container>
         </footer>
     );
 }

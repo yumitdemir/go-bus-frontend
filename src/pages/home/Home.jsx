@@ -4,16 +4,20 @@ import HomePageQuickLinks from "./components/HomePageQuickLinks.jsx";
 import TravelPerksCards from "./components/travelPerksCards/TravelPerksCards.jsx";
 import DestinationDiscoveryCard from "./components/DestinationDiscoveryCard.jsx";
 import FlixBusAdvantages from "./components/flixBusAdvantages/FlixBusAdvantages.jsx";
+import Container from "../../components/UI/Container.jsx";
 
 function Home(props) {
 
     return (
         <main className={"flex-1 "}>
-           <HeroImageAndSearchWidget/>
-            <HomePageQuickLinks/>
-            <TravelPerksCards/>
-            <DestinationDiscoveryCard/>
-            <FlixBusAdvantages/>
+            <HeroImageAndSearchWidget/>
+            <Container>
+                <HomePageQuickLinks/>
+                <TravelPerksCards/>
+                <DestinationDiscoveryCard/>
+                <FlixBusAdvantages/>
+            </Container>
+
 
         </main>
     );
