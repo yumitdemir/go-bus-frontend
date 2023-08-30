@@ -3,6 +3,7 @@ import Home from "./pages/home/Home.jsx";
 import GuestLayout from "./components/GuestLayout.jsx";
 import RouteSearch from "./pages/routeSearch/RouteSearch.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
+import ManageBooking from "./pages/manageBooking/ManageBooking.jsx";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: "/checkout",
                 element: <Checkout/>
+            },
+            {
+                path: "/manage-booking",
+                element: <ManageBooking/>
             }
 
         ]

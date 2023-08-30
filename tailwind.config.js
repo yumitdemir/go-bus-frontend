@@ -18,6 +18,7 @@ export default {
                 "neutral-content":"#8b8b8b",
                 "neutral-content-light":"#c8c8c8",
                 "neutral-content-hover":"#f0f0f0",
+                "neutral-content-text":"#777069ff",
                 secondary:"#e36934"
             }
         },
