@@ -12,6 +12,7 @@ export default {
             },
             colors:{
                 primary:"#082967",
+                "primary-light":"#5d8ade",
                 "primary-focus": "#194494",
                 neutral:"#353535",
                 "neutral-content":"#8b8b8b",

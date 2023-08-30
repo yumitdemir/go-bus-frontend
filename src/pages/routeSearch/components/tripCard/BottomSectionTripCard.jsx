@@ -3,6 +3,7 @@ import {RiBus2Line} from "react-icons/ri";
 import {MdKeyboardArrowDown, MdKeyboardArrowRight} from "react-icons/md";
 import {AiOutlineWifi} from "react-icons/ai";
 import {PiPlugBold} from "react-icons/pi";
+import {Link} from "react-router-dom";
 
 function BottomSectionTripCard(props) {
     return (
@@ -26,8 +27,8 @@ function BottomSectionTripCard(props) {
             </div>
             <div className={"flex gap-2 items-center"}>
                 <p className={"md:hidden text-[22px] font-bold"}>$75<sup className={"text-sm"}>.99</sup></p>
-                    <button className={"btn btn-primary text-white normal-case rounded-full md:rounded-lg px-0 md:px-3"}><p className={"hidden md:block"}>Continue</p> <MdKeyboardArrowRight
-                    className={"text-4xl"}/></button>
+                    <Link to={"/checkout"} className={"btn btn-primary text-white normal-case rounded-full md:rounded-lg px-0 md:px-3"}><p className={"hidden md:block"}>Continue</p> <MdKeyboardArrowRight
+                    className={"text-4xl"}/></Link>
             </div>
 
 
