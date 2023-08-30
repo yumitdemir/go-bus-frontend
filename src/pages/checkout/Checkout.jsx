@@ -5,8 +5,8 @@ import TripDetailsSummary from "./components/TripDetailsSummary.jsx";
 
 function Checkout(props) {
     return (
-        <Container className={"mt-12"}>
-            <div className={"flex "}>
+        <Container className={"mt-12 mb-12"}>
+            <div className={"flex gap-8"}>
                 <BookingForm/>
                 <TripDetailsSummary/>
             </div>

@@ -65,7 +65,7 @@ function DatePassangerAndSubmit({className}) {
                 </select>
             </div>
             <button type={"submit"}
-                    className={"w-[20%] bg-[#c44209] rounded-lg py-[10px] text-white hover:bg-[#b53d09]"}>
+                    className={"w-[20%] bg-secondary rounded-lg py-[10px] text-white hover:bg-[#b53d09]"}>
                 Search
             </button>
         </div>

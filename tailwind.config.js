@@ -17,7 +17,8 @@ export default {
                 neutral:"#353535",
                 "neutral-content":"#8b8b8b",
                 "neutral-content-light":"#c8c8c8",
-                "neutral-content-hover":"#f0f0f0"
+                "neutral-content-hover":"#f0f0f0",
+                secondary:"#e36934"
             }
         },
     },
@@ -32,6 +33,7 @@ export default {
                     ...require("daisyui/src/theming/themes")["[data-theme=light]"],
                     "primary": "#082967",
                     "primary-focus": "#194494",
+                    secondary:"#e36934"
                 },
             },
         ],
