@@ -8,7 +8,7 @@ import PrivacyPolicyCheckbox from "./PrivacyPolicyCheckbox.jsx";
 function TripDetailsSummary(props) {
     return (
 
-        <div className={"w-[35%] relative  "}>
+        <div className={"w-full md:w-[35%] relative  "}>
             <div className={"flex flex-col gap-3 sticky top-3"}>
                 <div className={"flex justify-between items-center"}>
                     <p className={"text-xl font-bold"}>Your Booking</p>

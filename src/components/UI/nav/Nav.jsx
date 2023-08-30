@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {MdKeyboardArrowDown} from "react-icons/md";
 import {GiHamburgerMenu} from "react-icons/gi";
 import Container from "../Container.jsx";
+import {useNavigate} from "react-router-dom";
 
 function Nav(props) {
     const [navState, setNavState] = useState(false);
+    const navigate = useNavigate()
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 768) {
@@ -20,14 +22,17 @@ function Nav(props) {
     const hamburgerClickHandler = () => {
         setNavState((oldStates) => !oldState)
     };
+    const navigateHomePage = () => {
+        navigate("/")
+    };
+
     return (
         <header>
             <nav className={" w-full bg-[#082967] h-[60px] "}>
-
                 <Container className={"h-full"}>
                     <div className={"flex w-full h-full items-center justify-between text-white"}>
                         <div className={"flex h-full justify-between "}>
-                            <img className={"w-20 me-8"} src="/src/assets/logo.svg" alt=""/>
+                            <img className={"w-20 me-8 cursor-pointer"} src="/src/assets/logo.svg" alt="" onClick={navigateHomePage}/>
                             <div className={" items-center h-full hidden md:flex gap-1"}>
                                 <p className={"  flex items-center cursor-pointer  h-full hover:bg-[#09265C]  px-2"}>Plan
                                     Your Journey <MdKeyboardArrowDown className={"text-2xl"}/></p>
