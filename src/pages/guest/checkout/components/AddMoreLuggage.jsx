@@ -1,6 +1,6 @@
 import React from 'react';
 import {MdAirlineSeatReclineNormal, MdKeyboardArrowRight, MdLuggage} from "react-icons/md";
-import ActionCard from "../../../components/UI/ActionCard.jsx";
+import ActionCard from "../../../../components/ui/ActionCard.jsx";
 
 function AddMoreLuggage(props) {
     return (

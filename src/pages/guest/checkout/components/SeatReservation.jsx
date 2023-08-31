@@ -1,7 +1,7 @@
 import React from 'react';
 import BookingFormSection from "./BookingFormSection.jsx";
 import {MdAirlineSeatReclineNormal, MdKeyboardArrowRight} from "react-icons/md";
-import ActionCard from "../../../components/UI/ActionCard.jsx";
+import ActionCard from "../../../../components/ui/ActionCard.jsx";
 
 function SeatReservation(props) {
     return (

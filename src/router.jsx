@@ -1,9 +1,11 @@
 import {createBrowserRouter} from "react-router-dom";
-import Home from "./pages/home/Home.jsx";
-import GuestLayout from "./components/GuestLayout.jsx";
-import RouteSearch from "./pages/routeSearch/RouteSearch.jsx";
-import Checkout from "./pages/checkout/Checkout.jsx";
-import ManageBooking from "./pages/manageBooking/ManageBooking.jsx";
+import Home from "./pages/guest/home/Home.jsx";
+import GuestLayout from "./components/layouts/GuestLayout.jsx";
+import RouteSearch from "./pages/guest/routeSearch/RouteSearch.jsx";
+import Checkout from "./pages/guest/checkout/Checkout.jsx";
+import ManageBooking from "./pages/guest/manageBooking/ManageBooking.jsx";
+import AdminLayout from "./components/layouts/AdminLayout.jsx";
+import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,17 @@ const router = createBrowserRouter([
                 path: "/manage-booking",
                 element: <ManageBooking/>
             }
+
+        ]
+    },
+    {
+        path: "/",
+        element: <AdminLayout/>,
+        children: [
+            {
+                path: "/admin",
+                element: <Dashbord/>,
+            },
 
         ]
     },

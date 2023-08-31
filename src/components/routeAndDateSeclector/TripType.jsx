@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import CheckBoxTripType from "./CheckBoxTripType.jsx";
-import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
+import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
 import {Controller} from "react-hook-form";
 
 function TripType(props) {

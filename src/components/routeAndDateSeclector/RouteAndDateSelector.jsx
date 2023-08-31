@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
+import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
 import TripType from "./TripType.jsx";
 import Route from "./Route.jsx";
 import DatePassangerAndSubmit from "./DatePassangerAndSubmit.jsx";

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {FaLocationDot} from "react-icons/fa6";
 import {HiOutlineArrowsRightLeft} from "react-icons/hi2";
-import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
+import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
 
 function Route({className}) {
     const {RouteAndDateForm} = useContext(RouteAndDateContext);

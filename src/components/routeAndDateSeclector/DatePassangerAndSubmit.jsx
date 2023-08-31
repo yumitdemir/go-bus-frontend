@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
-import {RouteAndDateContext} from "../../pages/home/RouteAndDateContext.jsx";
+import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
 
 function DatePassangerAndSubmit({className}) {
     const {RouteAndDateForm} = useContext(RouteAndDateContext);

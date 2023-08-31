@@ -1,5 +1,5 @@
 import React from 'react';
-import MapTeaser from "../../../assets/home/map-teaser.jpg"
+import MapTeaser from "../../../../assets/home/map-teaser.jpg"
 import {RiArrowRightSLine} from "react-icons/ri";
 
 function DestinationDiscoveryCard(props) {

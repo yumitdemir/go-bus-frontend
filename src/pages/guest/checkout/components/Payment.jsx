@@ -1,10 +1,10 @@
 import React from 'react';
 import BookingFormSection from "./BookingFormSection.jsx";
 import PaymentAccordionSection from "./PaymentAccordionSection.jsx";
-import GpayIcon from "../../../assets/payment-icons/google-pay.svg";
-import CreditCardIcon from "../../../assets/payment-icons/credit_card_jcb.svg";
-import PayPalIcon from "../../../assets/payment-icons/paypal.svg";
-import CashIcon from "../../../assets/payment-icons/cash-logo.svg";
+import GpayIcon from "../../../../assets/payment-icons/google-pay.svg";
+import CreditCardIcon from "../../../../assets/payment-icons/credit_card_jcb.svg";
+import PayPalIcon from "../../../../assets/payment-icons/paypal.svg";
+import CashIcon from "../../../../assets/payment-icons/cash-logo.svg";
 
 function Payment(props) {
     return (

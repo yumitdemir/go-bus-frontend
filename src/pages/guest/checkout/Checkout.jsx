@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from "../../components/UI/Container.jsx";
+import Container from "../../../components/ui/Container.jsx";
 import BookingForm from "./components/BookingForm.jsx";
 import TripDetailsSummary from "./components/TripDetailsSummary.jsx";
 

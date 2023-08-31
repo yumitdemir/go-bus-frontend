@@ -1,5 +1,5 @@
 import React from 'react';
-import ActionCard from "../../../components/UI/ActionCard.jsx";
+import ActionCard from "../../../../components/ui/ActionCard.jsx";
 import {MdAirlineSeatReclineNormal, MdLuggage, MdOutlineModeEditOutline, MdOutlineNoLuggage} from "react-icons/md";
 import {LuCalendarDays} from "react-icons/lu";
 import {GiCancel} from "react-icons/gi";

@@ -1,8 +1,8 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import RouteAndDateSelector from "../../components/RouteAndDateSeclector/RouteAndDateSelector.jsx";
+import RouteAndDateSelector from "../../../components/routeAndDateSeclector/RouteAndDateSelector.jsx";
 import {RouteAndDateProvider} from "../home/RouteAndDateContext.jsx";
-import Container from "../../components/UI/Container.jsx";
+import Container from "../../../components/ui/Container.jsx";
 import RouteSearchDisplay from "./components/RouteSearchDisplay.jsx";
 
 function RouteSearch(props) {
