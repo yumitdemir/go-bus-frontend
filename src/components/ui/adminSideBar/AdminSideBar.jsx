@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {HiMenuAlt3} from "react-icons/hi";
 import {NavLink} from "react-router-dom";
 import { MdOutlineDashboard} from "react-icons/md";
-import { TbLetterD} from "react-icons/tb";
+import {TbBusStop, TbLetterD} from "react-icons/tb";
 import {BsFillBusFrontFill} from "react-icons/bs";
 import {BiLogOutCircle, BiSolidDiscount, BiTrip} from "react-icons/bi";
 import {HiMiniTicket} from "react-icons/hi2";
@@ -13,7 +13,8 @@ function AdminSideBar(props) {
     const menus = [
         {name: "Dashboard", link: "/admin", icon: MdOutlineDashboard},
         {name: "Trips", link: "", icon: BiTrip,margin: true},
-        {name: "Drivers", link: "", icon: TbLetterD},
+        {name: "Bus Terminals/Stops", link: "", icon: TbBusStop},
+        {name: "Drivers", link: "", icon: TbLetterD,margin: true},
         {name: "Vehicles", link: "", icon: BsFillBusFrontFill},
         {name: "Promos", link: "", icon: BiSolidDiscount, margin: true},
         {name: "Tickets", link: "", icon: HiMiniTicket},
@@ -23,7 +24,7 @@ function AdminSideBar(props) {
 
     ];
 
-    const [isOpen, setOpen] = useState(true);
+    const [isOpen, setOpen] = useState(false);
 
     return (
         <section className="flex gap-6 h-100%  z-50 overflow-hidden">
