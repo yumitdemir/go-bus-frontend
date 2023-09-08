@@ -4,13 +4,16 @@ import {AiFillDelete} from "react-icons/ai";
 import {FiEdit} from "react-icons/fi";
 import {MdKeyboardArrowDown, MdKeyboardArrowUp} from "react-icons/md";
 import {useSearchParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import {BASE_URL} from "../../../config.js";
 
 
-function TableMapper({headers, rows, containerClassName, showActions,editHandler,deleteHanlder}) {
+function TableMapper({headers, rows, containerClassName, showActions, editHandler, deleteHanlder,refetch}) {
     const [sortCol, setSortCol] = useState(null);
     const [sortOrder, setSortOrder] = useState(null);
-
     const [searchParams, setSearchParams] = useSearchParams();
+
+
     const colSortParamHandler = (sortCol, sortOrder) => {
         setSearchParams((prevSearchParams) => {
             const updatedSearchParams = new URLSearchParams(prevSearchParams.toString());
@@ -72,7 +75,11 @@ function TableMapper({headers, rows, containerClassName, showActions,editHandler
                         {showActions &&
                             <>
                                 <FiEdit className={"cursor-pointer"} onClick={editHandler}/>
-                                <AiFillDelete className={"cursor-pointer"} onLoadCapture={deleteHanlder}/>
+                                <AiFillDelete className={"cursor-pointer"} onClick={() => {
+                                    deleteHanlder(row.id)
+
+                                }
+                                }/>
                             </>
                         }
 
