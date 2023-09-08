@@ -15,7 +15,7 @@ function AdminSideBar(props) {
         {name: "Trips", link: "", icon: BiTrip,margin: true},
         {name: "Bus Terminals/Stops", link: "", icon: TbBusStop},
         {name: "Drivers", link: "", icon: TbLetterD,margin: true},
-        {name: "Vehicles", link: "", icon: BsFillBusFrontFill},
+        {name: "Vehicles", link: "admin/vehicles", icon: BsFillBusFrontFill},
         {name: "Promos", link: "", icon: BiSolidDiscount, margin: true},
         {name: "Tickets", link: "", icon: HiMiniTicket},
         {name: "Admins", link: "", icon: IoPeople,margin: true},
@@ -27,7 +27,7 @@ function AdminSideBar(props) {
     const [isOpen, setOpen] = useState(false);
 
     return (
-        <section className="flex gap-6 h-100%  z-50 overflow-hidden">
+        <section className="flex gap-6 h-100  z-50 overflow-hidden  ">
             <div
                 className={`bg-[#0e0e0e] min-h-screen ${
                     isOpen ? "w-72" : "w-16"
@@ -51,6 +51,7 @@ function AdminSideBar(props) {
                         alt=""
                         className="w-max-[100%] outline-2 outline-white"
                     />
+                    <div/>
                 </NavLink>
                 <div className="mt-4 flex flex-col gap-4 ">
                     {menus?.map((menu, i) => (

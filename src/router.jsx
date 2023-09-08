@@ -6,6 +6,7 @@ import Checkout from "./pages/guest/checkout/Checkout.jsx";
 import ManageBooking from "./pages/guest/manageBooking/ManageBooking.jsx";
 import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
+import Vehicles from "./pages/admin/vehicles/Vehicles.jsx";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "admin/vehicles",
-                element: <Dashbord/>,
+                element: <Vehicles/>,
             },
 
         ]

@@ -6,7 +6,10 @@ function AdminLayout(props) {
     return (
         <div className={"flex"}>
             <AdminSideBar/>
-            <Outlet/>
+            <div className={"px-6 py-4 w-full overflow-x-auto h-screen overflow-y-auto"}>
+                <Outlet/>
+            </div>
+
         </div>
     );
 }

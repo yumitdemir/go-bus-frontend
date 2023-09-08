@@ -25,8 +25,6 @@ function RouteAndDateSelector({className}) {
     };
 
     return (
-
-
         <form onSubmit={handleSubmit(onSubmit)}>
             <TripType/>
             <div className={"flex flex-col lg:flex-row gap-3 w-[100%]"}>
