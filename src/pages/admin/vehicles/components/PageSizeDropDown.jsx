@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSearchParams} from "react-router-dom";
 
-function PageSizeDropDown({setCurrentPage}) {
+function PageSizeDropDown(params) {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const pageSizeParamHandler = (e) => {
@@ -14,7 +14,6 @@ function PageSizeDropDown({setCurrentPage}) {
                 updatedSearchParams.set(nameInput, e.target.value);
             }
             updatedSearchParams.set("page", "1");
-            setCurrentPage(1)
             return updatedSearchParams;
         });
     };
@@ -22,7 +21,7 @@ function PageSizeDropDown({setCurrentPage}) {
     return (
         <div className={"flex gap-1 items-center"}>
             <p className={"text-sm"}>Show: </p>
-            <select name={"pageSize"} defaultValue={"10"} className="select select-bordered w-fit max-w-xs" onChange={pageSizeParamHandler}>
+            <select name={"pageSize"}  value={searchParams.get("pageSize") == null ? 10:searchParams.get("pageSize")} className="select select-bordered w-fit max-w-xs" onChange={pageSizeParamHandler}>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>

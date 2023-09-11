@@ -11,7 +11,6 @@ function RouteAndDateSelector({className}) {
     const {handleSubmit} = RouteAndDateForm;
     const navigate = useNavigate()
     const onSubmit = (data) => {
-        console.log(data)
         navigate({
             pathname: "search",
             search: createSearchParams({

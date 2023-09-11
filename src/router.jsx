@@ -7,6 +7,7 @@ import ManageBooking from "./pages/guest/manageBooking/ManageBooking.jsx";
 import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
 import Vehicles from "./pages/admin/vehicles/Vehicles.jsx";
+import AddAndUpdateVehicle from "./pages/admin/AddAndUpdateVehicle.jsx";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,14 @@ const router = createBrowserRouter([
                 path: "admin/vehicles",
                 element: <Vehicles/>,
             },
-
+            {
+                path: "admin/add-vehicle",
+                element: <AddAndUpdateVehicle/>,
+            },
+            {
+                path: "admin/update-vehicle",
+                element: <AddAndUpdateVehicle/>,
+            },
         ]
     },
 ]);

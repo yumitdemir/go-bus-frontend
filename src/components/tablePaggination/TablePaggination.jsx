@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 import {
     MdOutlineKeyboardArrowLeft,
@@ -6,9 +6,9 @@ import {
     MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight
 } from "react-icons/md";
 
-function TablePaggination({currentPage,setCurrentPage, lastPage}) {
+function TablePaggination({ lastPage}) {
     const [searchParams, setSearchParams] = useSearchParams();
-
+    let currentPage = searchParams.get("page") != null ? +searchParams.get("page"): 1;
     const pageParamHandler = (page) => {
         setSearchParams((prevSearchParams) => {
             const updatedSearchParams = new URLSearchParams(prevSearchParams.toString());
@@ -18,27 +18,25 @@ function TablePaggination({currentPage,setCurrentPage, lastPage}) {
     };
     const navigateFirstPage = () => {
         pageParamHandler(1)
-        setCurrentPage(1)
     };
     const nextPage = () => {
         if (currentPage < lastPage) {
-            setCurrentPage(oldstate => oldstate+1)
             pageParamHandler(currentPage + 1)
         }
     };
     const prevPage = () => {
         if (currentPage > 1) {
             pageParamHandler(currentPage - 1)
-            setCurrentPage(oldstate => oldstate-1)
         }
     };
     const navigateLastPage = () => {
         if (currentPage < lastPage) {
             pageParamHandler(lastPage)
-            setCurrentPage(lastPage)
 
         }
     };
+
+
 
 
     return (
@@ -47,14 +45,14 @@ function TablePaggination({currentPage,setCurrentPage, lastPage}) {
                 className="border-none text-2xl px-2 py-2  rounded-full font-medium hover:bg-neutral hover:text-white"
                 onClick={navigateFirstPage}
             >
-               <MdOutlineKeyboardDoubleArrowLeft/>
+                <MdOutlineKeyboardDoubleArrowLeft/>
             </button>
             <button
                 className="border-none text-2xl  px-2 py-2  rounded-full font-medium hover:bg-neutral hover:text-white"
                 disabled={currentPage === 1}
                 onClick={prevPage}
             >
-               <MdOutlineKeyboardArrowLeft/>
+                <MdOutlineKeyboardArrowLeft/>
             </button>
             <span className="text-sm text-gray-700 px-1 py-2 flex justify-center">
                 {currentPage} of {lastPage}
@@ -64,7 +62,7 @@ function TablePaggination({currentPage,setCurrentPage, lastPage}) {
                 disabled={currentPage === lastPage}
                 onClick={nextPage}
             >
-               <MdOutlineKeyboardArrowRight/>
+                <MdOutlineKeyboardArrowRight/>
             </button>
             <button
                 className="border-none text-2xl px-2 py-2  rounded-full font-medium hover:bg-neutral hover:text-white"

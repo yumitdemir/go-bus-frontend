@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import SectionTitle from "../../../components/ui/SectionTitle.jsx";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
-import SearchInput from "../../../components/SearchInput.jsx";
+import SearchInput from "../../../components/ui/SearchInput.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
-import {useSearchParams} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {AiOutlinePlus} from "react-icons/ai";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "/config.js";
@@ -21,13 +21,13 @@ let headers = [
 ]
 
 function Vehicles(props) {
-    const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(999);
     const [searchParams, setSearchParams] = useSearchParams();
     const [tableData, setTableData] = useState([]);
+    const navigate = useNavigate()
 
     const {isLoading, isError, refetch} = useQuery({
-        queryKey: [searchParams.get("page"), searchParams.get("pageSize"), searchParams.get("filterQuery")],
+        queryKey: ["getVehicles"],
         queryFn: () => {
             return fetch(BASE_URL + 'api/Buses?' + searchParams.toString())
                 .then(response => {
@@ -47,10 +47,11 @@ function Vehicles(props) {
                 });
         }
     })
+    useEffect(() => {
+        refetch()
+    }, [searchParams])
 
     const deleteHandler = (id) => {
-        console.log(id)
-
         fetch(BASE_URL + 'api/Buses', {
             method: "DELETE",
             headers: {
@@ -60,41 +61,47 @@ function Vehicles(props) {
             body: JSON.stringify(id),
         })
             .then(response => {
-                console.log(response)
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data)
                 refetch()
             })
+
             .catch(error => {
                 // Handle errors here
                 console.error('There was a problem with the fetch operation:', error);
             });
     };
 
+    const editHandler = (id) => {
+        navigate("/admin/update-vehicle", {state: {Id: id, from: window.location.pathname}})
+    }
+
     return (
         <div className={"w-full flex flex-col gap-4"}>
             <SectionTitle>Vehicles</SectionTitle>
             <div className={"flex flex-col gap-4"}>
                 <div className={"flex justify-between items-center"}>
-                    <PageSizeDropDown setCurrentPage={setCurrentPage}/>
-                    <SearchInput setCurrentPage={setCurrentPage}/>
+                    <PageSizeDropDown/>
+                    <SearchInput/>
                 </div>
-                <button className={"self-end btn btn-primary text-white  w-fit"}>Add Vehicle <AiOutlinePlus
-                    className={"text-lg"}/></button>
+                <Link to={"/admin/add-vehicle"} state={{from: window.location.pathname}}
+                      className={"self-end btn btn-primary text-white  w-fit"}>Add Vehicle <AiOutlinePlus
+                    className={"text-lg"}/></Link>
             </div>
             {isLoading ? <span className=" self-center loading loading-spinner loading-lg"></span> :
-                <TableMapper refetch={refetch} deleteHanlder={deleteHandler} headers={headers} rows={tableData}
-                             containerClassName={"mx-auto"} showActions={true}/>}
+                <div className={"overflow-x-auto overflow-y-auto h-[60vh]"}>
+                    <TableMapper
+                        editHandler={editHandler}
+                        deleteHanlder={deleteHandler}
+                        headers={headers}
+                        rows={tableData}
+                        containerClassName={"mx-auto"}
+                        showActions={true}/>
+                </div>}
             {isError ? <p className={"text-center text-error"}>Couldn't load data </p> : undefined}
             {!isLoading && !isError ?
-                <TablePaggination currentPage={currentPage} setCurrentPage={setCurrentPage}
-                                  lastPage={lastPage}/> : undefined}
-
+                <TablePaggination lastPage={lastPage}/> : undefined}
         </div>
     );
 }
