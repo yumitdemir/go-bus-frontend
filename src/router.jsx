@@ -8,6 +8,8 @@ import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
 import Vehicles from "./pages/admin/vehicles/Vehicles.jsx";
 import AddAndUpdateVehicle from "./pages/admin/AddAndUpdateVehicle.jsx";
+import Drivers from "./pages/admin/drivers/Drivers.jsx";
+import AddAndUpdateDriver from "./pages/admin/AddAndUpdateDriver.jsx";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +54,18 @@ const router = createBrowserRouter([
             {
                 path: "admin/update-vehicle",
                 element: <AddAndUpdateVehicle/>,
+            },
+            {
+                path: "admin/add-driver",
+                element: <AddAndUpdateDriver/>,
+            },
+            {
+                path: "admin/update-driver",
+                element: <AddAndUpdateDriver/>,
+            },
+            {
+                path: "admin/drivers",
+                element: <Drivers/>,
             },
         ]
     },

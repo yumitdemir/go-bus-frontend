@@ -14,7 +14,7 @@ function AdminSideBar(props) {
         {name: "Dashboard", link: "/admin", icon: MdOutlineDashboard},
         {name: "Trips", link: "", icon: BiTrip,margin: true},
         {name: "Bus Terminals/Stops", link: "", icon: TbBusStop},
-        {name: "Drivers", link: "", icon: TbLetterD,margin: true},
+        {name: "Drivers", link: "admin/drivers", icon: TbLetterD,margin: true},
         {name: "Vehicles", link: "admin/vehicles", icon: BsFillBusFrontFill},
         {name: "Promos", link: "", icon: BiSolidDiscount, margin: true},
         {name: "Tickets", link: "", icon: HiMiniTicket},
