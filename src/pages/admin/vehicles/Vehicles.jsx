@@ -21,12 +21,10 @@ let headers = [
 ]
 
 function Vehicles(props) {
-    const [lastPage, setLastPage] = useState(999);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [tableData, setTableData] = useState([]);
     const navigate = useNavigate()
 
-    const {isLoading, isError, refetch} = useQuery({
+    const {isLoading, isError, refetch,data} = useQuery({
         queryKey: ["getVehicles"],
         queryFn: () => {
             return fetch(BASE_URL + 'api/Buses?' + searchParams.toString())
@@ -37,8 +35,6 @@ function Vehicles(props) {
                     return response.json();
                 })
                 .then(data => {
-                    setLastPage(data.biggestPageNumber)
-                    setTableData(data.buses)
                     return data
                 })
                 .catch(error => {
@@ -95,13 +91,13 @@ function Vehicles(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={tableData}
+                        rows={data.buses}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}
             {isError ? <p className={"text-center text-error"}>Couldn't load data </p> : undefined}
             {!isLoading && !isError ?
-                <TablePaggination lastPage={lastPage}/> : undefined}
+                <TablePaggination lastPage={data.biggestPageNumber}/> : undefined}
         </div>
     );
 }
