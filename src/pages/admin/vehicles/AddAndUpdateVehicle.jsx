@@ -1,10 +1,10 @@
 import React from 'react';
 import {FormProvider, useForm} from "react-hook-form";
-import {BASE_URL} from "../../../config.js";
+import {BASE_URL} from "../../../../config.js";
 import {useLocation, useNavigate} from "react-router-dom";
 import {BiArrowBack} from "react-icons/bi";
-import InputField from "../../components/ui/InputField.jsx";
-import SelectInputField from "../../components/ui/SelectInputField.jsx";
+import InputField from "../../../components/ui/InputField.jsx";
+import SelectInputField from "../../../components/ui/SelectInputField.jsx";
 import {useQuery} from "@tanstack/react-query";
 
 function AddAndUpdateVehicle(props) {

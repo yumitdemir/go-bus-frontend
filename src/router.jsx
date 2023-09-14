@@ -7,9 +7,11 @@ import ManageBooking from "./pages/guest/manageBooking/ManageBooking.jsx";
 import AdminLayout from "./components/layouts/AdminLayout.jsx";
 import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
 import Vehicles from "./pages/admin/vehicles/Vehicles.jsx";
-import AddAndUpdateVehicle from "./pages/admin/AddAndUpdateVehicle.jsx";
+import AddAndUpdateVehicle from "./pages/admin/vehicles/AddAndUpdateVehicle.jsx";
 import Drivers from "./pages/admin/drivers/Drivers.jsx";
-import AddAndUpdateDriver from "./pages/admin/AddAndUpdateDriver.jsx";
+import AddAndUpdateDriver from "./pages/admin/drivers/AddAndUpdateDriver.jsx";
+import BusStops from "./pages/admin/busStops/BusStops.jsx";
+import AddAndUpdateBusStop from "./pages/admin/busStops/AddAndUpdateBusStop.jsx";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +68,18 @@ const router = createBrowserRouter([
             {
                 path: "admin/drivers",
                 element: <Drivers/>,
+            },
+            {
+                path: "admin/bus-stops",
+                element: <BusStops/>,
+            },
+            {
+                path: "admin/add-busStop",
+                element: <AddAndUpdateBusStop/>,
+            },
+            {
+                path: "admin/update-busStop",
+                element: <AddAndUpdateBusStop/>,
             },
         ]
     },

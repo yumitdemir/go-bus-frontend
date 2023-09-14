@@ -2,10 +2,10 @@ import React from 'react';
 import {FormProvider, useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import {BASE_URL} from "../../../config.js";
+import {BASE_URL} from "../../../../config.js";
 import {BiArrowBack} from "react-icons/bi";
-import InputField from "../../components/ui/InputField.jsx";
-import SelectInputField from "../../components/ui/SelectInputField.jsx";
+import InputField from "../../../components/ui/InputField.jsx";
+import SelectInputField from "../../../components/ui/SelectInputField.jsx";
 
 function AddAndUpdateDriver(props) {
     const addDriverForm = useForm();
@@ -43,7 +43,7 @@ function AddAndUpdateDriver(props) {
         })
             .then(response => {
                 console.log(response)
-                return  response.json()
+                return response.json()
             })
             .then(data => {
                 navigate(location.state.from)
@@ -111,8 +111,7 @@ function AddAndUpdateDriver(props) {
                 </div>
             </div>
         </FormProvider>
-    )
-        ;
+    );
 }
 
 export default AddAndUpdateDriver;

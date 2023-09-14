@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
@@ -8,23 +8,24 @@ import SearchInput from "../../../components/ui/SearchInput.jsx";
 import {AiOutlinePlus} from "react-icons/ai";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
+
 let headers = [
     "id",
     "Name",
-    "Surname",
-    "License Number",
-    "Date Of Birth",
-    "Contact Number",
-    "Status",
+    "City",
+    "Country",
+    "Address",
+
 ]
-function Drivers(props) {
+
+function BusStops(props) {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate()
 
-    const {isLoading, isError, refetch,data} = useQuery({
-        queryKey: ["getDrivers"],
+    const {isLoading, isError, refetch, data} = useQuery({
+        queryKey: ["getBusStops"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Drivers?' + searchParams.toString())
+            return fetch(BASE_URL + 'api/BusStop?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -46,7 +47,7 @@ function Drivers(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Drivers', {
+        fetch(BASE_URL + 'api/BusStop', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -68,19 +69,19 @@ function Drivers(props) {
     };
 
     const editHandler = (id) => {
-        navigate("/admin/update-driver", {state: {Id: id, from: window.location.pathname}})
+        navigate("/admin/update-busStop", {state: {Id: id, from: window.location.pathname}})
     }
 
     return (
         <div className={"w-full flex flex-col gap-4"}>
-            <SectionTitle>Vehicles</SectionTitle>
+            <SectionTitle>Bus Terminals/Stops</SectionTitle>
             <div className={"flex flex-col gap-4"}>
                 <div className={"flex justify-between items-center"}>
                     <PageSizeDropDown/>
                     <SearchInput/>
                 </div>
-                <Link to={"/admin/add-driver"} state={{from: window.location.pathname}}
-                      className={"self-end btn btn-primary text-white  w-fit"}>Add Driver <AiOutlinePlus
+                <Link to={"/admin/add-busStop"} state={{from: window.location.pathname}}
+                      className={"self-end btn btn-primary text-white  w-fit"}>Add Terminal/Stop <AiOutlinePlus
                     className={"text-lg"}/></Link>
             </div>
             {isLoading ? <span className=" self-center loading loading-spinner loading-lg"></span> :
@@ -89,7 +90,7 @@ function Drivers(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={data.drivers}
+                        rows={data.busStops}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}
@@ -99,4 +100,6 @@ function Drivers(props) {
         </div>
     );
 }
-export default Drivers;
+
+
+export default BusStops;
