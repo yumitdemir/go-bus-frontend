@@ -6,19 +6,19 @@ import {TbBusStop, TbLetterD} from "react-icons/tb";
 import {BsFillBusFrontFill} from "react-icons/bs";
 import {BiLogOutCircle, BiSolidDiscount, BiTrip} from "react-icons/bi";
 import {HiMiniTicket} from "react-icons/hi2";
-import {IoPeople} from "react-icons/io5";
 import {CgProfile} from "react-icons/cg";
+import {CiRoute} from "react-icons/ci";
 
 function AdminSideBar(props) {
     const menus = [
         {name: "Dashboard", link: "/admin", icon: MdOutlineDashboard},
-        {name: "Trips", link: "", icon: BiTrip,margin: true},
+        {name: "Trips", link: "admin/trips", icon: BiTrip,margin: true},
+        {name: "Routes", link: "admin/routes", icon: CiRoute,},
         {name: "Bus Terminals/Stops", link: "admin/bus-stops", icon: TbBusStop},
         {name: "Drivers", link: "admin/drivers", icon: TbLetterD,margin: true},
         {name: "Vehicles", link: "admin/vehicles", icon: BsFillBusFrontFill},
         {name: "Promos", link: "", icon: BiSolidDiscount, margin: true},
         {name: "Tickets", link: "", icon: HiMiniTicket},
-        {name: "Admins", link: "", icon: IoPeople,margin: true},
         {name: "Profile", link: "", icon: CgProfile},
         {name: "Logout", link: "", icon: BiLogOutCircle,margin: true},
 
@@ -77,7 +77,7 @@ function AdminSideBar(props) {
                             <h2
                                 className={` ${
                                     !isOpen &&
-                                    "opacity-0 translate-x-28 overflow-hidden"
+                                    "hidden opacity-0 translate-x-28 overflow-hidden"
                                 }`}
                             >
                                 {menu?.name}

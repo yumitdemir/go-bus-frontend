@@ -12,6 +12,8 @@ import Drivers from "./pages/admin/drivers/Drivers.jsx";
 import AddAndUpdateDriver from "./pages/admin/drivers/AddAndUpdateDriver.jsx";
 import BusStops from "./pages/admin/busStops/BusStops.jsx";
 import AddAndUpdateBusStop from "./pages/admin/busStops/AddAndUpdateBusStop.jsx";
+import Routes from "./pages/admin/routes/Routes.jsx";
+import AddRoute from "./pages/admin/routes/AddRoute.jsx";
 
 const router = createBrowserRouter([
     {
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
             {
                 path: "admin/update-busStop",
                 element: <AddAndUpdateBusStop/>,
+            },
+            {
+                path: "admin/routes",
+                element: <Routes/>,
+            },
+            {
+                path: "admin/add-route",
+                element: <AddRoute/>,
             },
         ]
     },
