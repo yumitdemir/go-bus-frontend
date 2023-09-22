@@ -4,7 +4,6 @@ import {HiMiniMagnifyingGlass} from "react-icons/hi2";
 import {QueryClient} from "@tanstack/react-query";
 
 function SearchInput(params) {
-    const [searchParams, setSearchParams] = useSearchParams();
     const [searchQuery, setSearchQuery] = useState("");
     const serchQueryHandler = (e) => {
         setSearchQuery(e.target.value)

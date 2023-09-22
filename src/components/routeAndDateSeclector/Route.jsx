@@ -1,32 +1,147 @@
-import React, {useContext} from 'react';
-import {FaLocationDot} from "react-icons/fa6";
+import React from 'react';
 import {HiOutlineArrowsRightLeft} from "react-icons/hi2";
-import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
+import {Controller, useFormContext} from "react-hook-form";
+import Select from "react-select";
+import {useQuery} from "@tanstack/react-query";
+import {BASE_URL} from "../../../config.js";
+
+
+const customStyles = {
+    control: (base, state) => ({
+        ...base,
+        backgroundColor: 'white',
+        border: state.isFocused ? '1px solid #153b82' : '1px solid #8b8b8b',
+        borderRadius: '8px',
+        boxShadow: state.isFocused ? '0 0 0 1px #153b82' : null,
+        fontSize: '16px',
+        fontWeight: 'normal',
+        height: '47px',
+        lineHeight: '20px',
+        outline: 'none',
+        transition: 'all 100ms',
+    }),
+    option: (base, state) => ({
+        ...base,
+        backgroundColor: state.isSelected ? '#153b82' : null,
+        color: state.isSelected ? '#fff' : '#333333',
+        cursor: 'pointer',
+        fontSize: '16px',
+        fontWeight: state.isSelected ? 'bold' : null,
+        lineHeight: '20px',
+        padding: '10px 11px',
+
+    }),
+};
 
 function Route({className}) {
-    const {RouteAndDateForm} = useContext(RouteAndDateContext);
-    const {register} = RouteAndDateForm;
+    const {control,setValue,watch} = useFormContext();
+
+    const {isLoading, isError, refetch, data} = useQuery({
+        queryKey: ["getBusStops"],
+        queryFn: () => {
+            return fetch(BASE_URL + 'api/BusStop/GetAllBusStops?')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let restructuredBusStops = data.map((busStop) => {
+                        return {
+                            value: busStop,
+                            label: busStop.name + " / " + busStop.city
+                        }
+                    })
+                    return restructuredBusStops;
+                })
+                .catch(error => {
+                    // Handle errors here
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    })
+
+    const reverseBusStops = () => {
+        let from = watch("from")
+        let to  = watch("to")
+
+        setValue("from",to)
+        setValue("to",from)
+
+    };
     return (
         <div className={`${className}`}>
-            <div className={"relative w-full "}>
+            <div className={"relative w-full  flex items-center"}>
+                <label htmlFor={"label"}
+                       className={"bg-white z-20 px-2 absolute text-sm sm:text-base top-0 left-8 transform -translate-x-1/2 -translate-y-1/2 "}>From</label>
 
-                <label htmlFor={"label"}
-                       className={"bg-white px-2 absolute top-0 left-8 transform -translate-x-1/2 -translate-y-1/2 "}>From</label>
-                <FaLocationDot
-                    className={"text-[#8b8b8b] text-xl absolute top-1/2 left-6  transform -translate-x-1/2 -translate-y-1/2"}/>
-                <input type="text" name={"from"} {...register('from', {required: true})}
-                       className={"bg-white w-full border text-[#333333] border-e-0 border-[#8b8b8b] rounded-md rounded-r-none ps-10   py-2 text-lg outline-[#153b82] "}/>
+                <Controller
+                    control={control}
+                    name={"from"}
+                    rules={{required: true}}
+                    render={({field}) => (
+                        <Select
+                            {...field}
+                            options={data}
+                            onBlur={field.onBlur}
+                            styles={customStyles}
+                            classNamePrefix="react-select"
+                            isSearchable={false}
+                            placeholder="Departure"
+                            className={"w-full"}
+                            aria-label="Select an option"
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 4,
+                                colors: {
+                                    ...theme.colors,
+                                    primary25: '#153b82',
+                                    primary50: '#153b82',
+                                    primary75: '#153b82',
+                                    primary: '#153b82',
+                                },
+                            })}
+                        />
+                    )}
+                />
             </div>
-            <div className={"relative w-full"}>
+            <div className={"relative w-full flex items-center"}>
                 <label htmlFor={"label"}
-                       className={"bg-white px-2 absolute top-0 left-6 transform -translate-x-1/2 -translate-y-1/2"}>To</label>
-                <FaLocationDot
-                    className={"text-[#8b8b8b] text-xl absolute top-1/2 left-8 transform -translate-x-1/2 -translate-y-1/2"}/>
-                <input type="text" {...register('to', {required: true})}
-                       className={"bg-white w-full border text-[#333333] border-[#8b8b8b] rounded-md rounded-l-none ps-11  py-2 text-lg outline-[#153b82]"}/>
+                       className={"bg-white z-20 px-2 absolute text-sm sm:text-base  top-0 left-6 transform -translate-x-1/2 -translate-y-1/2"}>To</label>
+
+                <Controller
+                    control={control}
+                    name={"to"}
+                    rules={{required: true}}
+                    render={({field}) => (
+                        <Select
+                            {...field}
+                            options={data}
+                            onBlur={field.onBlur}
+                            styles={customStyles}
+                            classNamePrefix="react-select"
+                            isSearchable={false}
+                            placeholder="Arrival"
+                            className={"w-full"}
+                            aria-label="Select an option"
+                            theme={(theme) => ({
+                                ...theme,
+                                borderRadius: 4,
+                                colors: {
+                                    ...theme.colors,
+                                    primary25: '#153b82',
+                                    primary50: '#153b82',
+                                    primary75: '#153b82',
+                                    primary: '#153b82',
+                                },
+                            })}
+                        />
+                    )}
+                />
             </div>
-            <HiOutlineArrowsRightLeft
-                className={"bg-white text-4xl absolute  top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 rounded-full p-1 font-extrabold border-[#8b8b8b] border text-[#333333]"}/>
+            <HiOutlineArrowsRightLeft onClick={reverseBusStops}
+                className={"cursor-pointer bg-white text-4xl absolute  top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 rounded-full p-1 font-extrabold border-[#8b8b8b] border text-[#333333]"}/>
         </div>
     )
         ;

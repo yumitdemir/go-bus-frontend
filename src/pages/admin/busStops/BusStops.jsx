@@ -15,7 +15,6 @@ let headers = [
     "City",
     "Country",
     "Address",
-
 ]
 
 function BusStops(props) {
@@ -34,6 +33,7 @@ function BusStops(props) {
                     return response.json();
                 })
                 .then(data => {
+                    console.log(data)
                     return data
                 })
                 .catch(error => {

@@ -1,40 +1,48 @@
 import React, {useEffect, useState} from 'react';
-import SectionTitle from "../../../components/ui/SectionTitle.jsx";
-import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
-import SearchInput from "../../../components/ui/SearchInput.jsx";
-import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
-import {AiOutlinePlus} from "react-icons/ai";
 import {useQuery} from "@tanstack/react-query";
-import {BASE_URL} from "/config.js";
-import PageSizeDropDown from "./components/PageSizeDropDown.jsx";
-
+import {BASE_URL} from "../../../../config.js";
+import SectionTitle from "../../../components/ui/SectionTitle.jsx";
+import PageSizeDropDown from "../vehicles/components/PageSizeDropDown.jsx";
+import SearchInput from "../../../components/ui/SearchInput.jsx";
+import {AiOutlinePlus} from "react-icons/ai";
+import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
+import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
 let headers = [
     "id",
-    "brand",
-    "model",
-    "capacity",
-    "Restroom Available",
-    "WiFi Available",
-    "Last Maintenance",
-    "Plate Number",
+    "price Per Km",
+    "departure Date",
+    "route Name",
+    "Stop Count",
 ]
 
-function Vehicles(props) {
+function Trips(props) {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate()
+    const [renderData, setRenderData] = useState([]);
 
-    const {isLoading, isError, refetch,data} = useQuery({
-        queryKey: ["getVehicles"],
+    const {isLoading, isError, refetch, data} = useQuery({
+        queryKey: ["getTrips"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Buses?' + searchParams.toString())
+            return fetch(BASE_URL + 'api/Trip?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
+
                     return response.json();
                 })
                 .then(data => {
+                    let renderData = data.trips.map(trip => {
+                        return {
+                            id: trip.id,
+                            routeName: trip.route.routeName,
+                            pricePerKm: trip.pricePerKm,
+                            departureDate: trip.departureDate,
+                            // tripSegmentsLength: trip.route.busStops.length
+                        };
+                    });
+                    setRenderData(renderData);
                     return data
                 })
                 .catch(error => {
@@ -48,7 +56,7 @@ function Vehicles(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Buses', {
+        fetch(BASE_URL + 'api/Trip', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -70,19 +78,19 @@ function Vehicles(props) {
     };
 
     const editHandler = (id) => {
-        navigate("/admin/update-vehicle", {state: {Id: id, from: window.location.pathname}})
+        navigate("/admin/update-trip", {state: {Id: id, from: window.location.pathname}})
     }
 
     return (
         <div className={"w-full flex flex-col gap-4"}>
-            <SectionTitle>Vehicles</SectionTitle>
+            <SectionTitle>Trips</SectionTitle>
             <div className={"flex flex-col gap-4"}>
                 <div className={"flex justify-between items-center"}>
                     <PageSizeDropDown/>
                     <SearchInput/>
                 </div>
-                <Link to={"/admin/add-vehicle"} state={{from: window.location.pathname}}
-                      className={"self-end btn btn-primary text-white  w-fit"}>Add Vehicle <AiOutlinePlus
+                <Link to={"/admin/add-trip"} state={{from: window.location.pathname}}
+                      className={"self-end btn btn-primary text-white  w-fit"}>Add Terminal/Stop <AiOutlinePlus
                     className={"text-lg"}/></Link>
             </div>
             {isLoading ? <span className=" self-center loading loading-spinner loading-lg"></span> :
@@ -91,7 +99,7 @@ function Vehicles(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={data.buses}
+                        rows={renderData}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}
@@ -102,4 +110,5 @@ function Vehicles(props) {
     );
 }
 
-export default Vehicles;
+
+export default Trips;

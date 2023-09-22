@@ -2,6 +2,7 @@ import React from 'react';
 import {MdOutlineKeyboardArrowDown} from "react-icons/md";
 
 function ShowMoreTrips({title}) {
+
     return (
         <div
             className={"h-[36px] flex justify-center items-center mt-4 mb-2 mx-3 border border-neutral-content rounded-md hover:hover:bg-neutral-content-hover cursor-pointer"}>

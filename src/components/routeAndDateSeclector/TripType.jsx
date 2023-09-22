@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import CheckBoxTripType from "./CheckBoxTripType.jsx";
 import {RouteAndDateContext} from "../../pages/guest/home/RouteAndDateContext.jsx";
-import {Controller} from "react-hook-form";
+import {Controller, useFormContext} from "react-hook-form";
 
 function TripType(props) {
-    const {RouteAndDateForm} = useContext(RouteAndDateContext);
-    const {register, control} = RouteAndDateForm;
+    const {  control } = useFormContext();
     return (
         <div className={"flex flex-row gap-4 mb-[24px]"}>
             <Controller

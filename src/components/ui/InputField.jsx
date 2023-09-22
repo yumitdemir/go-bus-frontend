@@ -11,7 +11,7 @@ function InputField({ name, label, required, otherOptions, containerClassName, d
     }, [defaultValue]);
 
     return (
-        <div className={containerClassName ? containerClassName : "flex flex-col gap-1 w-full"}>
+        <div className={containerClassName + " flex flex-col gap-1 w-full"}>
             <label htmlFor={name}>{label}</label>
             <input
                 type={type ? type : "text"}
