@@ -10,10 +10,11 @@ import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
 let headers = [
     "id",
+    "route Name",
     "price Per Km",
     "departure Date",
-    "route Name",
     "Stop Count",
+    "PNR"
 ]
 
 function Trips(props) {
@@ -33,13 +34,15 @@ function Trips(props) {
                     return response.json();
                 })
                 .then(data => {
+                    console.log(data)
                     let renderData = data.trips.map(trip => {
                         return {
                             id: trip.id,
                             routeName: trip.route.routeName,
                             pricePerKm: trip.pricePerKm,
                             departureDate: trip.departureDate,
-                            // tripSegmentsLength: trip.route.busStops.length
+                            tripSegmentsLength: trip.route.routeSegments?.length+1,
+                            PNR:trip.pnr
                         };
                     });
                     setRenderData(renderData);

@@ -16,6 +16,7 @@ import Routes from "./pages/admin/routes/Routes.jsx";
 import AddRoute from "./pages/admin/routes/AddRoute.jsx";
 import Trips from "./pages/admin/trips/Trips.jsx";
 import AddTrip from "./pages/admin/trips/AddTrip.jsx";
+import BookingDetails from "./pages/guest/BookingDetails.jsx";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
             {
                 path: "/manage-booking",
                 element: <ManageBooking/>
-            }
+            },
+            {
+                path: "/booking-details",
+                element: <BookingDetails/>,
+            },
 
         ]
     },

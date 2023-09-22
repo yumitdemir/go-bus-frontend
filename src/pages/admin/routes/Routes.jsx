@@ -38,12 +38,12 @@ function Routes(props) {
                             let durationInMinutes = durationParts[0] * 60 + durationParts[1] + durationParts[2] / 60;
                             return total + durationInMinutes;
                         }, 0);
-
+                        console.log(data)
                         return {
                             id:route.id,
                             routeName: route.routeName,
                             Duration: totalDuration,
-                            // busstopCount: route.busStops.length
+                            busstopCount: route.routeSegments?.length + 1
                         };
                     });
                     setRestructuredRoutes(restructuredRoutes);
@@ -88,7 +88,7 @@ function Routes(props) {
 
     return (
         <div className={"w-full flex flex-col gap-4"}>
-            <SectionTitle>Bus Terminals/Stops</SectionTitle>
+            <SectionTitle>Routes</SectionTitle>
             <div className={"flex flex-col gap-4"}>
                 <div className={"flex justify-between items-center"}>
                     <PageSizeDropDown/>

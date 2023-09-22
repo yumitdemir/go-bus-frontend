@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Container from "../../../components/ui/Container.jsx";
 import BookingForm from "./components/BookingForm.jsx";
 import TripDetailsSummary from "./components/TripDetailsSummary.jsx";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
 import {FormProvider, useForm} from "react-hook-form";
@@ -13,7 +13,7 @@ function Checkout(props) {
     var bookingForm = useForm()
     const [bookingId, setBookingId] = useState();
     const [enabled, setEnabled] = useState(false);
-
+    const navigate = useNavigate();
     useEffect(() => {
         setEnabled(true);
     }, []);
@@ -130,6 +130,7 @@ function Checkout(props) {
                 return response.json();
             })
             .then(data => {
+                navigate("/booking-details", {state: {data}})
                 return data;
             })
             .catch(error => {
