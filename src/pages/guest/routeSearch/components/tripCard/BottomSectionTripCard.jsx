@@ -6,6 +6,7 @@ import {PiPlugBold} from "react-icons/pi";
 import {Link, useSearchParams} from "react-router-dom";
 import {useTripCardContext} from "../../../../../context/TripCardContext.jsx";
 import {LiaToiletSolid} from "react-icons/lia";
+import {useFormContext} from "react-hook-form";
 
 function BottomSectionTripCard(props) {
     const [searchParams, setSearchParams]= useSearchParams();

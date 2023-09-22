@@ -15,6 +15,7 @@ import AddAndUpdateBusStop from "./pages/admin/busStops/AddAndUpdateBusStop.jsx"
 import Routes from "./pages/admin/routes/Routes.jsx";
 import AddRoute from "./pages/admin/routes/AddRoute.jsx";
 import Trips from "./pages/admin/trips/Trips.jsx";
+import AddTrip from "./pages/admin/trips/AddTrip.jsx";
 
 const router = createBrowserRouter([
     {
@@ -96,6 +97,11 @@ const router = createBrowserRouter([
                 path: "admin/trips",
                 element: <Trips/>,
             },
+            {
+                path: "/admin/add-trip",
+                element: <AddTrip/>,
+            },
+
         ]
     },
 ]);

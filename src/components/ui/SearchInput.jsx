@@ -5,6 +5,7 @@ import {QueryClient} from "@tanstack/react-query";
 
 function SearchInput(params) {
     const [searchQuery, setSearchQuery] = useState("");
+    const [searchParams, setSearchParams] = useSearchParams();
     const serchQueryHandler = (e) => {
         setSearchQuery(e.target.value)
     };

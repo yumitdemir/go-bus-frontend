@@ -18,7 +18,7 @@ function TripDetailsSummary(props) {
                 <PriceDetails/>
                 <AddVoucher/>
                 <PrivacyPolicyCheckbox/>
-                <button className={"btn btn-secondary text-white"}>Pay now</button>
+                <button type={"submit"} className={"btn btn-secondary text-white"}>Pay now</button>
             </div>
         </div>
     );
