@@ -94,7 +94,7 @@ function Routes(props) {
                     <PageSizeDropDown/>
                     <SearchInput/>
                 </div>
-                <Link to={"/admin/add-route"} state={{from: window.location.pathname}}
+                <Link to={"/admin/add-route"}  state={{from: window.location.pathname}}
                       className={"self-end btn btn-primary text-white  w-fit"}>Add Terminal/Stop <AiOutlinePlus
                     className={"text-lg"}/></Link>
             </div>

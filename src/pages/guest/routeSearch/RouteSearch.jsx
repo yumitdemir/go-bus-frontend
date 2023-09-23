@@ -17,7 +17,6 @@ function RouteSearch(props) {
         queryFn: () => {
             return fetch(BASE_URL + 'api/Trip/GetTripsByFilters?' + searchParams.toString())
                 .then(response => {
-                    console.log(response)
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -37,6 +36,8 @@ function RouteSearch(props) {
     return (
         <div>
             <FormProvider {...routeSearch}>
+
+
                 <Container className={"mt-6 mb-10"}>
                     <RouteAndDateSelector/>
                     {isLoading ? <div className={"flex justify-center items-center h-60"}>

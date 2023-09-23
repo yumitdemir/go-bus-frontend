@@ -7,12 +7,15 @@ import {nanoid} from "nanoid";
 import InputField from "../../../components/ui/InputField.jsx";
 import SectionTitle from "../../../components/ui/SectionTitle.jsx";
 import {BASE_URL} from "../../../../config.js";
-import {Await} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {BiArrowBack} from "react-icons/bi";
 
 function createRouteSegmentObject(obj) {
     let result = [];
     let keys = Object.keys(obj);
     let busStopKeys = keys.filter(key => key.startsWith("BusStop") && !key.includes("Duration") && !key.includes("Distance"));
+
+
 
     for (let i = 0; i < busStopKeys.length - 1; i++) {
         let nextStopNumber = busStopKeys[i + 1].replace("BusStop", "");
@@ -35,7 +38,8 @@ function AddRoute(props) {
     const addRoute = useForm();
     const {register, handleSubmit, formState: {errors}, control} = addRoute;
     const [RouteSegmentSelectors, setRouteSegmentSelectors] = useState(["", ""]);
-
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleClick = () => {
         setRouteSegmentSelectors(prevElements => [...prevElements,
@@ -47,43 +51,14 @@ function AddRoute(props) {
 
     const onSubmit = async (data) => {
         let routeSegments = createRouteSegmentObject(data);
-        let segmentIds = [];
-
-        // Create an array of fetch promises
-        let fetchPromises = routeSegments.map(segment =>
-            fetch(BASE_URL + "api/RouteSegment", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(segment)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => data.id)
-                .catch(error => {
-                    console.error("There was a problem with the fetch operation:", error);
-                })
-        );
-
-        // Wait for all fetch promises to resolve
-        segmentIds = await Promise.all(fetchPromises);
-
-        let busStopIds = routeSegments.flatMap(segment => [segment.departureStopId, segment.arrivalStopId]);
 
         let postObject = {
-            "routeName": data.RouteName,
-            "routeSegmentIds": segmentIds,
-            "busStopIds": busStopIds
+            "RouteName": data.RouteName,
+            "RouteSegments": routeSegments,
         };
 
         console.log(postObject);
 
-        // Post the new route
         fetch(BASE_URL + "api/Route", {
             method: 'POST',
             headers: {
@@ -92,13 +67,14 @@ function AddRoute(props) {
             body: JSON.stringify(postObject)
         })
             .then(response => {
+                console.log(response)
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                navigate(location.state.from)
             })
             .catch(error => {
                 console.error("There was a problem with the fetch operation:", error);
@@ -107,6 +83,11 @@ function AddRoute(props) {
 
     return (
         <FormProvider {...addRoute}>
+            <div className={"w-full h-fit mb-6"}>
+                <BiArrowBack className={"text-4xl cursor-pointer "} onClick={() => {
+                    navigate(location.state.from)
+                }}/>
+            </div>
             <SectionTitle>Add Route</SectionTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={"flex gap-3"}>

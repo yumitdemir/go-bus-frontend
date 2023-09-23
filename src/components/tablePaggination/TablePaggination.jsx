@@ -37,7 +37,9 @@ function TablePaggination({ lastPage}) {
     };
 
 
-
+    if (lastPage === 0) {
+        return undefined;
+    }
 
     return (
         <div className={"flex gap-4 items-center justify-center mt-4"}>

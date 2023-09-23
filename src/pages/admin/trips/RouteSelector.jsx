@@ -6,7 +6,7 @@ import {BASE_URL} from "../../../../config.js";
 
 function RouteSelector({name,label}) {
     const {formState: {errors}, control} = useFormContext();
-
+    const [searchParams, setSearchParams] = searchParams();
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getRoutes"],
         queryFn: () => {
@@ -43,6 +43,7 @@ function RouteSelector({name,label}) {
                     <Select
                         {...field}
                         className="basic-multi-select input w-full max-w-xs px-0 h-fit"
+
                         options={data}
                         onChange={value => field.onChange(value)}
                         onBlur={field.onBlur}

@@ -18,7 +18,7 @@ function transformObject(input) {
         departureDate: new Date().toISOString(),
         timeOfDay: input.timeOfDay.map(item => item.value),
         dayOfWeek: input.dayOfWeek.map(item => item.value),
-        unavailableDates: input.unavailableDates.map(date => new Date(date).toISOString()),
+        unavailableDates: input.unavailableDates?.map(date => new Date(date).toISOString()),
         lastAvailableDate: input.lastAvailableDate,
         startDate: input.startDate
     };
@@ -40,7 +40,6 @@ function AddTrip(props) {
             body: JSON.stringify(transformedObject)
         })
             .then(response => {
-                console.log(response)
                 return response.json()
             })
             .then(data => {
@@ -70,7 +69,8 @@ function AddTrip(props) {
                                 <InputField name={"pricePerKm"} type={"number"} label={"Price PerKm"}/>
                                 <BusSelector name={"busId"} label={"Bus"}/>
                                 {isRepeatingTrip ?
-                                    <InputField name={"departureDate"} type={"datetime-local"} label={"Departure Date"}/> :
+                                    <InputField name={"departureDate"} type={"datetime-local"}
+                                                label={"Departure Date"}/> :
                                     <>
                                         <DaysOfTheWeekSelector name={"dayOfWeek"} label={"Day Of Trip"}/>
                                         <UnavailableDatesSelector name={"unavailableDates"}

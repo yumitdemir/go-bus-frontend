@@ -12,15 +12,16 @@ function RouteAndDateSelector({className}) {
 
     const navigate = useNavigate()
     const onSubmit = (data) => {
+        console.log("fired")
         console.log(data)
         navigate({
-            pathname: "search",
+            pathname: "/search",
             search: createSearchParams({
                 tripType: data.tripType,
                 departureStopId: data.from.value.id,
                 arrivalStopId: data.to.value.id,
-                departureDate: data.dateStart.toISOString().split('T')[0],
-                returnDate: data.dateReturn.toISOString().split('T')[0],
+                departureDate: data.date.startDate,
+                returnDate: data.date.endDate,
                 passengerCount: data.passengers
             }).toString()
         });

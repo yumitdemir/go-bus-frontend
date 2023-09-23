@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {HiOutlineArrowsRightLeft} from "react-icons/hi2";
 import {Controller, useFormContext} from "react-hook-form";
 import Select from "react-select";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../config.js";
+import {useSearchParams} from "react-router-dom";
 
 
 const customStyles = {
@@ -34,8 +35,8 @@ const customStyles = {
 };
 
 function Route({className}) {
-    const {control,setValue,watch} = useFormContext();
-
+    const {control, setValue, watch} = useFormContext();
+    const [searchParams, setSearchParams] = useSearchParams();
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getBusStops"],
         queryFn: () => {
@@ -61,15 +62,28 @@ function Route({className}) {
                 });
         }
     })
+    console.log(data)
 
     const reverseBusStops = () => {
         let from = watch("from")
-        let to  = watch("to")
+        let to = watch("to")
 
-        setValue("from",to)
-        setValue("to",from)
+        setValue("from", to)
+        setValue("to", from)
 
     };
+    let defaultDepartureStop;
+    let defaultArrivalStop;
+    useEffect(() => {
+        if (data) {
+            defaultDepartureStop = data.find(x => x.value.id.toString() === searchParams.get("departureStopId"))
+            defaultArrivalStop = data.find(x => x.value.id.toString() === searchParams.get("arrivalStopId"))
+            setValue("from", defaultDepartureStop)
+            setValue("to", defaultArrivalStop)
+        }
+    }, [data]);
+
+
     return (
         <div className={`${className}`}>
             <div className={"relative w-full  flex items-center"}>
@@ -141,7 +155,7 @@ function Route({className}) {
                 />
             </div>
             <HiOutlineArrowsRightLeft onClick={reverseBusStops}
-                className={"cursor-pointer bg-white text-4xl absolute  top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 rounded-full p-1 font-extrabold border-[#8b8b8b] border text-[#333333]"}/>
+                                      className={"cursor-pointer bg-white text-4xl absolute  top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 rounded-full p-1 font-extrabold border-[#8b8b8b] border text-[#333333]"}/>
         </div>
     )
         ;

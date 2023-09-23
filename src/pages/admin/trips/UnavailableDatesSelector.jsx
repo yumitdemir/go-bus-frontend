@@ -11,7 +11,7 @@ function UnavailableDatesSelector({name,label}) {
             <Controller
                 control={control}
                 name={name}
-                rules={{required: true}}
+                rules={{required: false}}
                 render={({field}) => (
                     <DatePicker
                         {...field}
