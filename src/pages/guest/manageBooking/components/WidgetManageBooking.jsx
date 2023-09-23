@@ -1,9 +1,9 @@
 import React from 'react';
+import {useFormContext} from "react-hook-form";
 
-function WidgetManageBooking({setShowBooking}) {
-    const searchHanlder = () => {
-        setShowBooking(true)
-    };
+function WidgetManageBooking(props) {
+    const { register} = useFormContext();
+
     return (
         <>
             <p className={"text-2xl font-bold mb-6"}>Manage My Booking</p>
@@ -15,7 +15,7 @@ function WidgetManageBooking({setShowBooking}) {
                     <label className="label">
                         <span className="label-text text-neutral-content-text text-[16px]">Booking Number</span>
                     </label>
-                    <input type="text" placeholder=""
+                    <input  {...register("pnr", {required: true})} type="text" placeholder=""
                            className="input input-bordered input-primary border-neutral-content w-[300px]"/>
                 </div>
             </div>
@@ -25,11 +25,11 @@ function WidgetManageBooking({setShowBooking}) {
                             <span
                                 className="label-text text-neutral-content-text text-[16px]">Email or Phone Number</span>
                     </label>
-                    <input type="text" placeholder=""
+                    <input  {...register("email", {required: true})} type="text" placeholder=""
                            className="input input-bordered input-primary border-neutral-content w-[300px]"/>
                 </div>
             </div>
-            <button className={"btn btn-secondary text-white w-[300px] mt-3"} onClick={searchHanlder}>Retrieve booking</button>
+            <button className={"btn btn-secondary text-white w-[300px] mt-3"} type={"submit"}>Retrieve booking</button>
         </>
     );
 }
