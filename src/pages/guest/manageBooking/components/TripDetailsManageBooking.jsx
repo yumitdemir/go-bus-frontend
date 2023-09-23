@@ -49,6 +49,7 @@ function TripDetailsManageBooking(props) {
 
     return (
         <div className={"border border-neutral-content-light rounded-md mt-6 p-[24px] flex flex-col gap-3 "}>
+            { data.booking.status && <p className={"text-error text-2xl uppercase text-center font-bold"}>Trip canceled by user</p>}
             <div className={'flex justify-between items-center'}>
                 <p className={"font-bold text-sm"}>{formattedDepartureDate()} </p>
                 <div className={"border border-neutral-content-light rounded-xl p-1"}>

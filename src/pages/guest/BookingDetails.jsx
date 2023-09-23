@@ -33,7 +33,7 @@ function BookingDetails(props) {
             <div className={"bg-primary rounded-xl text-white w-1/2 h-[400px]  flex-col py-4 px-5 flex justify-center items-center"}>
                <p className={" text-4xl text-center  font-bold mb-2 "}>Booking Confirmed</p>
                 <p className={"text-sm "}>Your booking is confirmed! You will receive a confirmation email shortly with all the details of your reservation.</p>
-               <p className={" text-3xl text-center  font-bold mt-6"}>PNR:<span className={"text-white font-normal"}>{data.pnr}</span></p>
+               <p className={" text-3xl text-center  font-bold mt-6"}>PNR:<span className={"ml-2 text-white font-normal"}>{location.state.data.trip.pnr}</span></p>
             </div>
         </div>
     );

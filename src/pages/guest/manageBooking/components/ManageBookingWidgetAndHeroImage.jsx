@@ -31,10 +31,9 @@ function ManageBookingWidgetAndHeroImage(props) {
                     return response.json();
                 })
                 .then(data => {
-
+                    console.log(data)
                     setShowBooking(true);
                     data = {...data, pnr}
-                    console.log(data)
                     return data
                 })
                 .catch(error => {

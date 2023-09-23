@@ -6,7 +6,7 @@ import QuestionsManageBooking from "./components/QuestionsManageBooking.jsx";
 function ManageBooking(props) {
 
     return (
-        <div className={"mb-12 flex flex-col"}>
+        <div className={"mb-12 flex flex-col "}>
             <ManageBookingWidgetAndHeroImage/>
             <QuestionsManageBooking/>
 

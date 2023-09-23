@@ -24,7 +24,7 @@ function ManageBookingActions(props) {
                 return response.json()
             })
             .then(data => {
-                navigate("/")
+
             })
             .catch(error => {
                 console.error("There was a problem with the fetch operation:", error);
