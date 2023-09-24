@@ -71,7 +71,7 @@ function BusStops(props) {
     const editHandler = (id) => {
         navigate("/admin/update-busStop", {state: {Id: id, from: window.location.pathname}})
     }
-
+    let emptyArray = []
     return (
         <div className={"w-full flex flex-col gap-4"}>
             <SectionTitle>Bus Terminals/Stops</SectionTitle>
@@ -90,7 +90,7 @@ function BusStops(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={data.busStops}
+                        rows={data?.busStops ? data.busStops : []}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}

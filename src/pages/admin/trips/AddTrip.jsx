@@ -15,7 +15,7 @@ function transformObject(input) {
         routeId: input.routeId.value,
         pricePerKm: parseFloat(input.pricePerKm),
         busId: input.busId.value,
-        departureDate: new Date().toISOString(),
+        departureDate: input.departureDate != null ? new Date().toISOString() : null,
         timeOfDay: input.timeOfDay.map(item => item.value),
         dayOfWeek: input.dayOfWeek.map(item => item.value),
         unavailableDates: input.unavailableDates?.map(date => new Date(date).toISOString()),

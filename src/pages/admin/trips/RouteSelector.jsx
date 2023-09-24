@@ -3,10 +3,10 @@ import {Controller, useFormContext} from "react-hook-form";
 import Select from "react-select";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
+import {useSearchParams} from "react-router-dom";
 
 function RouteSelector({name,label}) {
     const {formState: {errors}, control} = useFormContext();
-    const [searchParams, setSearchParams] = searchParams();
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getRoutes"],
         queryFn: () => {

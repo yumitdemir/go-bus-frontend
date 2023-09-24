@@ -24,7 +24,7 @@ function Vehicles(props) {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate()
 
-    const {isLoading, isError, refetch,data} = useQuery({
+    const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getVehicles"],
         queryFn: () => {
             return fetch(BASE_URL + 'api/Buses?' + searchParams.toString())
@@ -91,7 +91,7 @@ function Vehicles(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={data.buses}
+                        rows={data?.buses ? data?.buses : []}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}

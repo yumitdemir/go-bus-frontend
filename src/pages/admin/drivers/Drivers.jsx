@@ -8,6 +8,7 @@ import SearchInput from "../../../components/ui/SearchInput.jsx";
 import {AiOutlinePlus} from "react-icons/ai";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
+
 let headers = [
     "id",
     "Name",
@@ -17,11 +18,12 @@ let headers = [
     "Contact Number",
     "Status",
 ]
+
 function Drivers(props) {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate()
 
-    const {isLoading, isError, refetch,data} = useQuery({
+    const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getDrivers"],
         queryFn: () => {
             return fetch(BASE_URL + 'api/Drivers?' + searchParams.toString())
@@ -89,7 +91,7 @@ function Drivers(props) {
                         editHandler={editHandler}
                         deleteHanlder={deleteHandler}
                         headers={headers}
-                        rows={data.drivers}
+                        rows={data?.drivers ? data?.drivers : []}
                         containerClassName={"mx-auto"}
                         showActions={true}/>
                 </div>}
@@ -99,4 +101,5 @@ function Drivers(props) {
         </div>
     );
 }
+
 export default Drivers;
