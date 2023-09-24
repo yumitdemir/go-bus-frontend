@@ -8,6 +8,8 @@ import SearchInput from "../../../components/ui/SearchInput.jsx";
 import {AiOutlinePlus} from "react-icons/ai";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
+import api from "../../../Api.js";
+
 let headers = [
     "id",
     "route Name",
@@ -25,8 +27,9 @@ function Trips(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getTrips"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Trip?' + searchParams.toString())
+            return api('api/Trip?' + searchParams.toString())
                 .then(response => {
+                    console.log(response)
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -41,8 +44,8 @@ function Trips(props) {
                             routeName: trip.route.routeName,
                             pricePerKm: trip.pricePerKm,
                             departureDate: trip.departureDate,
-                            tripSegmentsLength: trip.route.routeSegments?.length+1,
-                            PNR:trip.pnr
+                            tripSegmentsLength: trip.route.routeSegments?.length + 1,
+                            PNR: trip.pnr
                         };
                     });
                     setRenderData(renderData);
@@ -59,13 +62,12 @@ function Trips(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Trip', {
+        api('api/Trip?id=' + id, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            body: JSON.stringify(id),
         })
             .then(response => {
                 if (!response.ok) {

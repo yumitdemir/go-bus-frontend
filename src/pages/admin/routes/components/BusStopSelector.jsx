@@ -3,6 +3,7 @@ import {Controller, useFormContext} from "react-hook-form";
 import Select from "react-select";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../../config.js";
+import api from "../../../../Api.js";
 
 
 
@@ -12,7 +13,7 @@ function BusStopSelector({name}) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getBusStops"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/BusStop/GetAllBusStops?')
+            return api('api/BusStop/GetAllBusStops?')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

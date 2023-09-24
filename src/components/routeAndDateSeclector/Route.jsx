@@ -5,6 +5,7 @@ import Select from "react-select";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../config.js";
 import {useSearchParams} from "react-router-dom";
+import api from "../../Api.js";
 
 
 const customStyles = {
@@ -40,7 +41,7 @@ function Route({className}) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getBusStops"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/BusStop/GetAllBusStops?')
+            return api('api/BusStop/GetAllBusStops?')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

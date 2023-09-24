@@ -6,6 +6,7 @@ import RouteSearchDisplay from "./components/RouteSearchDisplay.jsx";
 import {FormProvider, useForm} from "react-hook-form";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
+import api from "../../../Api.js";
 
 function RouteSearch(props) {
     const {id} = useParams();
@@ -15,7 +16,7 @@ function RouteSearch(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getTrips"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Trip/GetTripsByFilters?' + searchParams.toString())
+            return api( 'api/Trip/GetTripsByFilters?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

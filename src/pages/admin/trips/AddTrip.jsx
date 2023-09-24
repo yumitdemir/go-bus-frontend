@@ -9,6 +9,7 @@ import UnavailableDatesSelector from "./UnavailableDatesSelector.jsx";
 import {BASE_URL} from "../../../../config.js";
 import {useLocation, useNavigate} from "react-router-dom";
 import {BiArrowBack} from "react-icons/bi";
+import api from "../../../Api.js";
 
 function transformObject(input) {
     return {
@@ -32,7 +33,7 @@ function AddTrip(props) {
     const [isRepeatingTrip, setIsRepeatingTrip] = useState(false);
     const submitHandler = (data) => {
         var transformedObject = transformObject(data)
-        fetch(BASE_URL + "api/Trip", {
+        api("api/Trip", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -6,6 +6,7 @@ import {BASE_URL} from "../../../../config.js";
 import {BiArrowBack} from "react-icons/bi";
 import InputField from "../../../components/ui/InputField.jsx";
 import SelectInputField from "../../../components/ui/SelectInputField.jsx";
+import api from "../../../Api.js";
 
 function AddAndUpdateDriver(props) {
     const addDriverForm = useForm();
@@ -15,7 +16,7 @@ function AddAndUpdateDriver(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["updateDriver"],
         queryFn: () => {
-            return fetch(BASE_URL + "api/Drivers/GetById?id=" + location.state.Id)
+            return api("api/Drivers/GetById?id=" + location.state.Id)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -34,7 +35,7 @@ function AddAndUpdateDriver(props) {
     })
 
     const onSubmitAdd = (data) => {
-        fetch(BASE_URL + "api/Drivers", {
+        api("api/Drivers", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ function AddAndUpdateDriver(props) {
             });
     };
     const onSubmitUpdate = (data) => {
-        fetch(BASE_URL + "api/Drivers?id=" + location.state.Id, {
+        api("api/Drivers?id=" + location.state.Id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

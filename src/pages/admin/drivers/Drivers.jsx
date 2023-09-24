@@ -8,6 +8,7 @@ import SearchInput from "../../../components/ui/SearchInput.jsx";
 import {AiOutlinePlus} from "react-icons/ai";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
+import api from "../../../Api.js";
 
 let headers = [
     "id",
@@ -26,7 +27,7 @@ function Drivers(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getDrivers"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Drivers?' + searchParams.toString())
+            return api('api/Drivers?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -48,7 +49,7 @@ function Drivers(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Drivers', {
+        api('api/Drivers', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',

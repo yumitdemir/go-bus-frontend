@@ -9,12 +9,12 @@ import SectionTitle from "../../../components/ui/SectionTitle.jsx";
 import {BASE_URL} from "../../../../config.js";
 import {useLocation, useNavigate} from "react-router-dom";
 import {BiArrowBack} from "react-icons/bi";
+import api from "../../../Api.js";
 
 function createRouteSegmentObject(obj) {
     let result = [];
     let keys = Object.keys(obj);
     let busStopKeys = keys.filter(key => key.startsWith("BusStop") && !key.includes("Duration") && !key.includes("Distance"));
-
 
 
     for (let i = 0; i < busStopKeys.length - 1; i++) {
@@ -59,7 +59,7 @@ function AddRoute(props) {
 
         console.log(postObject);
 
-        fetch(BASE_URL + "api/Route", {
+        api("api/Route", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -8,6 +8,7 @@ import SearchInput from "../../../components/ui/SearchInput.jsx";
 import {AiOutlinePlus} from "react-icons/ai";
 import TableMapper from "../../../components/tableMapper/TableMapper.jsx";
 import TablePaggination from "../../../components/tablePaggination/TablePaggination.jsx";
+import api from "../../../Api.js";
 
 let headers = [
     "id",
@@ -23,12 +24,11 @@ function Routes(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getRoutes"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Route?' + searchParams.toString())
+            return api('api/Route?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-
                     return response.json();
                 })
                 .then(data => {
@@ -40,7 +40,7 @@ function Routes(props) {
                         }, 0);
                         console.log(data)
                         return {
-                            id:route.id,
+                            id: route.id,
                             routeName: route.routeName,
                             Duration: totalDuration,
                             busstopCount: route.routeSegments?.length + 1
@@ -63,7 +63,7 @@ function Routes(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Route/' + id, {
+        api('api/Route/' + id, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ function Routes(props) {
                     <PageSizeDropDown/>
                     <SearchInput/>
                 </div>
-                <Link to={"/admin/add-route"}  state={{from: window.location.pathname}}
+                <Link to={"/admin/add-route"} state={{from: window.location.pathname}}
                       className={"self-end btn btn-primary text-white  w-fit"}>Add Terminal/Stop <AiOutlinePlus
                     className={"text-lg"}/></Link>
             </div>

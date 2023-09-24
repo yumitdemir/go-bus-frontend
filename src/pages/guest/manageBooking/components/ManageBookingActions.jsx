@@ -8,12 +8,13 @@ import {IoMailOpenOutline} from "react-icons/io5";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../../config.js";
 import {useLocation, useNavigate} from "react-router-dom";
+import api from "../../../../Api.js";
 
 function ManageBookingActions(props) {
     const {data} = useQuery(['getBooking']);
     const navigate = useNavigate();
     const cancleBooking = () => {
-        fetch(BASE_URL + "api/Booking/CancelBooking?bookingId=" + data.booking.id, {
+        api("api/Booking/CancelBooking?bookingId=" + data.booking.id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +44,7 @@ function ManageBookingActions(props) {
                 <ActionCard icon={<LuCalendarDays className={"w-full h-full text-secondary"}/>}>
                     <p className={"text-lg font-medium"}>Change the departure date/time</p>
                 </ActionCard>
-                <ActionCard icon={<GiCancel className={"w-full h-full text-red-700"}/>} onClick={cancleBooking} >
+                <ActionCard icon={<GiCancel className={"w-full h-full text-red-700"}/>} onClick={cancleBooking}>
                     <p className={"text-lg font-medium"}>Cancel Booking</p>
                 </ActionCard>
             </div>

@@ -6,6 +6,7 @@ import {BiArrowBack} from "react-icons/bi";
 import InputField from "../../../components/ui/InputField.jsx";
 import SelectInputField from "../../../components/ui/SelectInputField.jsx";
 import {useQuery} from "@tanstack/react-query";
+import api from "../../../Api.js";
 
 function AddAndUpdateVehicle(props) {
     const addVehicleForm = useForm();
@@ -15,7 +16,7 @@ function AddAndUpdateVehicle(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["updateVehicle"],
         queryFn: () => {
-            return fetch(BASE_URL + "api/Buses/GetById?id=" + location.state.Id)
+            return api("api/Buses/GetById?id=" + location.state.Id)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -34,7 +35,7 @@ function AddAndUpdateVehicle(props) {
     })
 
     const onSubmitAdd = (data) => {
-        fetch(BASE_URL + "api/Buses", {
+        api("api/Buses", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +51,7 @@ function AddAndUpdateVehicle(props) {
             });
     };
     const onSubmitUpdate = (data) => {
-        fetch(BASE_URL + "api/Buses?id=" + location.state.Id, {
+        api("api/Buses?id=" + location.state.Id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

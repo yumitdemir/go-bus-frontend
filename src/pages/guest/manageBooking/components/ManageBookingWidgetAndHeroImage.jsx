@@ -4,6 +4,7 @@ import DetailsManageBooking from "./DetailsManageBooking.jsx";
 import {FormProvider, useForm} from "react-hook-form";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../../config.js";
+import api from "../../../../Api.js";
 
 function ManageBookingWidgetAndHeroImage(props) {
     const [showBooking, setShowBooking] = useState(false);
@@ -17,7 +18,7 @@ function ManageBookingWidgetAndHeroImage(props) {
         queryKey: ["getBooking"],
         enabled: enabled,
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Booking/GetBookingInformation', {
+            return api('api/Booking/GetBookingInformation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -2,15 +2,14 @@ import React from 'react';
 import {Controller, useFormContext} from "react-hook-form";
 import Select from "react-select";
 import {useQuery} from "@tanstack/react-query";
-import {BASE_URL} from "../../../../config.js";
-import {useSearchParams} from "react-router-dom";
+import api from "../../../Api.js";
 
-function RouteSelector({name,label}) {
+function RouteSelector({name, label}) {
     const {formState: {errors}, control} = useFormContext();
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getRoutes"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Route/GetAllRoutes')
+            return api('api/Route/GetAllRoutes')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -20,8 +19,8 @@ function RouteSelector({name,label}) {
                 .then(data => {
                     let restructuredRoutes = data.map((route) => {
                         return {
-                            value:route.id,
-                            label:route.routeName
+                            value: route.id,
+                            label: route.routeName
                         }
                     })
                     return restructuredRoutes;
@@ -38,7 +37,7 @@ function RouteSelector({name,label}) {
             <Controller
                 control={control}
                 name={name}
-                rules={{ required: true }}
+                rules={{required: true}}
                 render={({field}) => (
                     <Select
                         {...field}

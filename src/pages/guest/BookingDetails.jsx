@@ -2,13 +2,14 @@ import React from 'react';
 import {useLocation} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../config.js";
+import api from "../../Api.js";
 
 function BookingDetails(props) {
     const location = useLocation()
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getTrip"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Trip/GetById?id='+location.state.data.tripId )
+            return api(BASE_URL + 'api/Trip/GetById?id='+location.state.data.tripId )
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

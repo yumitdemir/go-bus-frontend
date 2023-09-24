@@ -5,7 +5,7 @@ import RouteSearch from "./pages/guest/routeSearch/RouteSearch.jsx";
 import Checkout from "./pages/guest/checkout/Checkout.jsx";
 import ManageBooking from "./pages/guest/manageBooking/ManageBooking.jsx";
 import AdminLayout from "./components/layouts/AdminLayout.jsx";
-import Dashbord from "./pages/admin/dashboard/Dashbord.jsx";
+import Dashbord from "./pages/admin/dashboard/Dashboard.jsx";
 import Vehicles from "./pages/admin/vehicles/Vehicles.jsx";
 import AddAndUpdateVehicle from "./pages/admin/vehicles/AddAndUpdateVehicle.jsx";
 import Drivers from "./pages/admin/drivers/Drivers.jsx";
@@ -17,6 +17,9 @@ import AddRoute from "./pages/admin/routes/AddRoute.jsx";
 import Trips from "./pages/admin/trips/Trips.jsx";
 import AddTrip from "./pages/admin/trips/AddTrip.jsx";
 import BookingDetails from "./pages/guest/BookingDetails.jsx";
+import AdminLogin from "./pages/admin/AdminLogin.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 
 const router = createBrowserRouter([
     {
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
             },
 
         ]
+    },
+    {
+        path: "/admin/login",
+        element: <AdminLogin/>,
     },
     {
         path: "/",
@@ -108,6 +115,10 @@ const router = createBrowserRouter([
             },
 
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound/>,
     },
 ]);
 

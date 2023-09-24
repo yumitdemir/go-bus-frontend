@@ -6,6 +6,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
 import {FormProvider, useForm} from "react-hook-form";
+import api from "../../../Api.js";
 
 
 function Checkout(props) {
@@ -30,7 +31,7 @@ function Checkout(props) {
         staleTime: Infinity,
         cacheTime: Infinity,
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Booking', {
+            return api('api/Booking', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -64,7 +65,7 @@ function Checkout(props) {
                 ev.preventDefault();
 
 
-                fetch(BASE_URL + 'api/Booking', {
+                api('api/Booking', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -115,7 +116,7 @@ function Checkout(props) {
             }
         }
         console.log(restructuredData)
-        fetch(BASE_URL + 'api/Booking', {
+        api( 'api/Booking', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

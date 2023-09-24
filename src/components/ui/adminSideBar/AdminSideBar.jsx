@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {HiMenuAlt3} from "react-icons/hi";
 import {NavLink} from "react-router-dom";
 import { MdOutlineDashboard} from "react-icons/md";
@@ -8,6 +8,7 @@ import {BiLogOutCircle, BiSolidDiscount, BiTrip} from "react-icons/bi";
 import {HiMiniTicket} from "react-icons/hi2";
 import {CgProfile} from "react-icons/cg";
 import {CiRoute} from "react-icons/ci";
+import AuthContext from "../../../context/AuthContext.jsx";
 
 function AdminSideBar(props) {
     const menus = [
@@ -21,10 +22,10 @@ function AdminSideBar(props) {
         {name: "Tickets", link: "", icon: HiMiniTicket},
         {name: "Profile", link: "", icon: CgProfile},
         {name: "Logout", link: "", icon: BiLogOutCircle,margin: true},
-
     ];
 
     const [isOpen, setOpen] = useState(false);
+    const {logout} = useContext(AuthContext);
 
     return (
         <section className="flex gap-6 h-100  z-50 overflow-hidden  ">
@@ -58,6 +59,7 @@ function AdminSideBar(props) {
                         <NavLink
                             to={`${menu.link}${menu.search ? menu.search : ''}`}
                             key={i}
+                            onClick={menu.name === 'Logout' ? logout : null}
                             className={({isActive}) =>
                                 isActive
                                     ? `${

@@ -3,14 +3,15 @@ import {Controller, useFormContext} from "react-hook-form";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "../../../../config.js";
 import Select from "react-select";
+import api from "../../../Api.js";
 
-function BusSelector({name,label}) {
+function BusSelector({name, label}) {
     const {formState: {errors}, control} = useFormContext();
 
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getBuses"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Buses/GetAllBuses')
+            return api('api/Buses/GetAllBuses')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -20,8 +21,8 @@ function BusSelector({name,label}) {
                 .then(data => {
                     let restructuredBuses = data.map((bus) => {
                         return {
-                            value:bus.id,
-                            label:bus.plateNumber + " " + bus.capacity
+                            value: bus.id,
+                            label: bus.plateNumber + " " + bus.capacity
                         }
                     })
                     return restructuredBuses;
@@ -38,7 +39,7 @@ function BusSelector({name,label}) {
             <Controller
                 control={control}
                 name={name}
-                rules={{ required: true }}
+                rules={{required: true}}
                 render={({field}) => (
                     <Select
                         {...field}

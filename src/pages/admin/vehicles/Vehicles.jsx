@@ -8,6 +8,7 @@ import {AiOutlinePlus} from "react-icons/ai";
 import {useQuery} from "@tanstack/react-query";
 import {BASE_URL} from "/config.js";
 import PageSizeDropDown from "./components/PageSizeDropDown.jsx";
+import api from "../../../Api.js";
 
 let headers = [
     "id",
@@ -27,7 +28,7 @@ function Vehicles(props) {
     const {isLoading, isError, refetch, data} = useQuery({
         queryKey: ["getVehicles"],
         queryFn: () => {
-            return fetch(BASE_URL + 'api/Buses?' + searchParams.toString())
+            return api('api/Buses?' + searchParams.toString())
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -48,7 +49,7 @@ function Vehicles(props) {
     }, [searchParams])
 
     const deleteHandler = (id) => {
-        fetch(BASE_URL + 'api/Buses', {
+        api( 'api/Buses', {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
