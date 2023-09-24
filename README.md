@@ -2,7 +2,7 @@
 ## Short Description
 Go Bus is a bus booking website that I developed as a personal project. The main functionality of the website is to provide a platform for users to book bus tickets. Users can select their departure and arrival bus stops, choose the departure date, view the available buses, and then proceed to book their tickets. The website is designed to be fully responsive, providing a seamless user experience across different devices.
 
-##Technology Stack
+## Technology Stack
 This project is a full-stack application that uses ASP.NET Core Web API for the backend and React for the front end.
 ### Backend
 The backend of the application is built using ASP.NET Core Web API. It handles all the server-side operations of the application. It uses JWT authentication to secure the endpoints and ensure that only authorized users can access certain routes.
