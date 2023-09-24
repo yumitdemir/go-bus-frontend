@@ -19,8 +19,7 @@ The front end of the application is built using React. It consists of two main p
 ![search](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/79bcbcf5-e807-4f89-9605-846cf5fb7d13)
 <pre>                               </pre>
 ![screencapture-localhost-5173-search-2023-09-25-01_25_30](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/1819956c-9f88-4965-a178-fcad7eb1d5d1)
-<pre>                               </pre>
-![cancledbooking](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/15ffa745-f427-42d6-95d1-7b05eafcc04c)
+
 <pre>                               </pre>
 ![checkout](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/e5710194-55cd-455a-aa4b-0ffdc2b1a0d4)
 <pre>                               </pre>
@@ -28,6 +27,7 @@ The front end of the application is built using React. It consists of two main p
 <pre>                               </pre>
 ![managebooking card](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/a731e127-a6d4-4e01-b624-edb5cae40754)
 <pre>                               </pre>
+![cancledbooking](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/15ffa745-f427-42d6-95d1-7b05eafcc04c)
 
 ### Admin
 ![screencapture-localhost-5173-admin-2023-09-25-01_26_00](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/68936781-926c-452a-9d6d-7d22a2da7481)
