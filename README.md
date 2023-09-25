@@ -9,7 +9,7 @@ The backend of the application is built using ASP.NET Core Web API. It handles a
 ### Frontend
 The front end of the application is built using React. It consists of two main parts: an admin dashboard and guest pages. The admin dashboard provides an interface for administrators to manage the application, including viewing and managing bookings. It features server-side pagination to efficiently handle large amounts of data. The guest pages are where users can select their bus stops, view available buses, and book their tickets.
 ## Website Video
-[![YoutbeVideo]((https://www.youtube.com/watch?v=9jXndwC4Ar4))
+[![YoutbeVideo]((https://www.youtube.com/watch?v=9jXndwC4Ar4))]
 
 ## Screenshots of The Website
 ### Guest
